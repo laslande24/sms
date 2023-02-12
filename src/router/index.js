@@ -1,11 +1,11 @@
 import { h, resolveComponent } from 'vue'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import DefaultLayout from '@/layouts/DefaultLayout'
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: () => import('@/views/Login'),
   },
@@ -31,9 +31,27 @@ const routes = [
         component: () => import('@/views/Classes.vue'),
       },
       {
+        path: '/personnel',
+        name: 'Personnel',
+        component: () => import('@/views/Classes.vue'),
+      },
+      {
         path: '/my-courses',
         name: 'My Courses',
-        component: () => import('@/views/Courses.vue'),
+        redirect: '/my-courses/index',
+        children: [
+          {
+            path: 'index',
+            name: 'All Course',
+            component: () => import('@/views/Student/Courses/index.vue'),
+          },
+          {
+            path: 'details/:id',
+            name: 'Course Details',
+            props: true,
+            component: () => import('@/views/Student/Courses/details.vue'),
+          },
+        ],
       },
       {
         path: '/assignment',
@@ -77,7 +95,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(process.env.BASE_URL),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior() {
     return { top: 0 }

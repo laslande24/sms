@@ -65,7 +65,10 @@ import { RouterLink } from 'vue-router'
               </div>
 
               <div class="pt-1 mb-2">
-                <button class="btn btn-dark btn-lg btn-block" type="button">
+                <button
+                  class="btn btn-dark btn-lg btn-block btn-sm"
+                  type="button"
+                >
                   Login
                 </button>
               </div>

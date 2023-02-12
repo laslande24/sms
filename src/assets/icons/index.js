@@ -83,6 +83,9 @@ import {
   cilUserFollow,
   cilVideo,
   cilXCircle,
+  cilChatBubble,
+  cilBullhorn,
+  cilFolder,
 } from '@coreui/icons'
 
 export const iconsSet = Object.assign(
@@ -145,6 +148,9 @@ export const iconsSet = Object.assign(
     cilUserFollow,
     cilVideo,
     cilXCircle,
+    cilChatBubble,
+    cilBullhorn,
+    cilFolder,
   },
   {
     cifUs,

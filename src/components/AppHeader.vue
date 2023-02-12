@@ -11,9 +11,6 @@
         <CNavItem>
           <CNavLink href="/dashboard"> Dashboard </CNavLink>
         </CNavItem>
-        <CNavItem>
-          <CNavLink href="#">Romaric Laslande</CNavLink>
-        </CNavItem>
       </CHeaderNav>
       <CHeaderNav>
         <CNavItem>
