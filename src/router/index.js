@@ -51,6 +51,24 @@ const routes = [
             props: true,
             component: () => import('@/views/Student/Courses/details.vue'),
           },
+          {
+            path: 'chapters/:id',
+            name: 'Course Chapter',
+            props: true,
+            component: () => import('@/views/Student/Courses/Chapters.vue'),
+          },
+          {
+            path: 'chapters/:id',
+            name: 'Course Chapter',
+            props: true,
+            component: () => import('@/views/Student/Courses/Chapters.vue'),
+          },
+          {
+            path: 'chats/:id',
+            name: 'Course Chats',
+            props: true,
+            component: () => import('@/views/Student/Courses/ChatMeeting.vue'),
+          },
         ],
       },
       {

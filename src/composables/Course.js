@@ -44,4 +44,28 @@ const getCourse = (id) => {
   return { course, error, load }
 }
 
-export { getCourse, getCourses }
+const getCourseChapter = (id) => {
+  const chapters = ref(null)
+  const error = ref(null)
+  const load = async () => {
+    try {
+      let data = await axios.get(
+        'http://127.0.0.1:8000/course/' + id + '/chapter',
+      )
+      let res = await data
+      if (!res.data.success) {
+        console.log('course', res.data.error)
+        throw res.data.error
+      }
+      chapters.value = res.data.data
+      console.log(chapters.value)
+    } catch (e) {
+      error.value = e
+      console.log('error', error.value)
+    }
+  }
+
+  return { chapters, error, load }
+}
+
+export { getCourse, getCourses, getCourseChapter }

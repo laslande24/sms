@@ -1,32 +1,121 @@
 <template>
   <div class="row" v-if="course != null">
-    <div class="col-sm-12 col-md-6 col-lg-7">
-      <h1>{{ course.name }}</h1>
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <CCard class="shadow-sm p-0">
-            <CCardBody class="chapt pb-0 pt-1">
-              <div>
-                <h3>Chapters</h3>
-              </div>
-              <div>
-                <p>{{ course.chapters.length }}</p>
-              </div>
-            </CCardBody>
-          </CCard>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-5">
-      <div class="pb-2">
-        <div class="chat-div d-flex flex-column justify-content-between p-2">
-          <div>
-            <p>Good</p>
+    <div style="background: white; max-height: 78vh" class="col-sm-12 mp pb-4">
+      <div>
+        <div class="d-flex justify-content-between">
+          <h3 style="color: #3c4b64" class="m-2">
+            {{ course.name.toUpperCase() }}
+          </h3>
+          <div class="pt-3 pe-4">
+            <a href="https://coreui.io">
+              <CIcon
+                style="color: gold"
+                class="mx-2"
+                icon="cil-folderOpen"
+                size="lg"
+              />
+            </a>
+            <router-link
+              :to="{ name: 'Course Chats', params: { id: course.id } }"
+            >
+              <CIcon class="mx-2" icon="cil-chat-bubble" size="lg" />
+            </router-link>
+            <a href="https://coreui.io">
+              <CIcon
+                style="color: crimson"
+                class="mx-2"
+                icon="cil-video"
+                size="lg"
+              />
+            </a>
           </div>
-          <div class="entry-div p-1">
-            <CustomTextarea v-model="msg" :value="msg"></CustomTextarea>
+        </div>
+
+        <br />
+        <div class="row details">
+          <div class="col-sm-6 col-md-4">
+            <label>Lecturer:</label>
+            <p class="ps-2">{{ course.lecture }}Jules Akono</p>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <label>Code:</label>
+            <p class="ps-2">{{ course.code.toUpperCase() }}</p>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <label>Category:</label>
+            <p class="ps-2">{{ course.category.toUpperCase() }}</p>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label>Objective:</label>
+            <p class="ps-2">{{ course.objective }}</p>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label>Description:</label>
+            <p class="ps-2">{{ course.description }}</p>
           </div>
         </div>
+        <br />
+        <CRow>
+          <CCol :xs="4">
+            <CWidgetStatsF
+              color="primary"
+              title="Chapters"
+              v-bind:value="course.chapters.length"
+            >
+              <template #icon>
+                <CIcon icon="cil-listRich" size="xl" />
+              </template>
+              <template #footer>
+                <router-link
+                  :to="{ name: 'Course Chapter', params: { id: course.id } }"
+                >
+                  View more
+                  <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
+                </router-link>
+              </template>
+            </CWidgetStatsF>
+          </CCol>
+          <CCol :xs="4">
+            <CWidgetStatsF color="info" title="Past Papers">
+              <template #icon>
+                <CIcon icon="cil-copy" size="xl" />
+              </template>
+              <template #footer>
+                <CLink
+                  class="font-weight-bold font-xs text-medium-emphasis"
+                  href="https://coreui.io/"
+                  rel="noopener norefferer"
+                  target="_blank"
+                >
+                  View more
+                  <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
+                </CLink>
+              </template>
+            </CWidgetStatsF>
+          </CCol>
+          <CCol :xs="4">
+            <CWidgetStatsF
+              color="warning"
+              title="Mate"
+              :value="course.students.length"
+            >
+              <template #icon>
+                <CIcon icon="cil-people" size="xl" />
+              </template>
+              <template #footer>
+                <CLink
+                  class="font-weight-bold font-xs text-medium-emphasis"
+                  href="https://coreui.io/"
+                  rel="noopener norefferer"
+                  target="_blank"
+                >
+                  View more
+                  <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
+                </CLink>
+              </template>
+            </CWidgetStatsF>
+          </CCol>
+        </CRow>
       </div>
     </div>
   </div>
@@ -42,12 +131,11 @@
 
 <script>
 import { getCourse } from '@/composables/Course'
-import CustomTextarea from '@/components/CustomTextarea.vue'
 import { ref } from 'vue'
+
 export default {
   name: 'details',
-  components: { CustomTextarea },
-  component: [CustomTextarea],
+  components: {},
   props: ['id'],
   setup(props) {
     const { error, course, load } = getCourse(props.id)
@@ -64,34 +152,13 @@ export default {
 </script>
 
 <style scoped>
-.chapt p,
-.chapt h3 {
-  text-align: center;
+.details p {
+  width: 90%;
+  color: #3c4b64;
+  font-weight: bold;
 }
-
-.chapt p {
-  font-size: 2rem;
-}
-.chat-div {
-  background: white;
-  height: 78vh;
-}
-
-.entry-div {
-  min-height: 30px;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  width: 80%;
-}
-.entry-div textarea {
-  width: 100%;
-  resize: none;
-  font-size: 0.8rem;
-  border: none !important;
-}
-
-.entry-div textarea:focus {
-  border: none !important;
-  outline: none;
+.details label {
+  font-weight: lighter;
+  width: 90%;
 }
 </style>

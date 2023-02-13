@@ -3,7 +3,7 @@
     <div
       v-for="(course, index) in courses"
       :key="index"
-      class="row col-sm-10 col-md-6 col-lg-3 mb-4 px-4"
+      class="row col-sm-10 col-md-6 col-lg-4 mb-4 px-4"
     >
       <CCard class="shadow-sm p-0">
         <CCardHeader>
@@ -16,15 +16,25 @@
             <router-link
               :to="{ name: 'Course Details', params: { id: course.id } }"
             >
-              {{ course.name }} by {{ course.name }}
+              <b style="color: #3c4b64">{{ course.name }}</b> by Jules Akono
             </router-link>
           </div>
           <div class="py-2 pt-3 d-flex justify-content-between">
             <a href="https://coreui.io">
-              <CIcon class="mx-2" icon="cil-video" size="lg" />
+              <CIcon
+                style="color: #3b5998"
+                class="mx-2"
+                icon="cil-video"
+                size="lg"
+              />
             </a>
             <a href="https://coreui.io">
-              <CIcon class="mx-2" icon="cil-folder" size="lg" />
+              <CIcon
+                style="color: gold"
+                class="mx-2"
+                icon="cil-folderOpen"
+                size="lg"
+              />
             </a>
             <a href="https://coreui.io">
               <CIcon class="mx-2" icon="cil-chat-bubble" size="lg" />

@@ -1,5 +1,12 @@
 <template>
-  <textarea ref="textarea" rows="1" @focus="resize" @keyup="resize"> </textarea>
+  <textarea
+    placeholder="type a message"
+    ref="textarea"
+    rows="1"
+    @focus="resize"
+    @keyup="resize"
+  >
+  </textarea>
 </template>
 
 <script>

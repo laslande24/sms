@@ -86,6 +86,13 @@ import {
   cilChatBubble,
   cilBullhorn,
   cilFolder,
+  cilPaperclip,
+  cilSend,
+  cilChevronRight,
+  cilCopy,
+  cilListRich,
+  cilFolderOpen,
+  cilArrowThickToBottom,
 } from '@coreui/icons'
 
 export const iconsSet = Object.assign(
@@ -151,6 +158,13 @@ export const iconsSet = Object.assign(
     cilChatBubble,
     cilBullhorn,
     cilFolder,
+    cilPaperclip,
+    cilSend,
+    cilChevronRight,
+    cilArrowThickToBottom,
+    cilCopy,
+    cilFolderOpen,
+    cilListRich,
   },
   {
     cifUs,
