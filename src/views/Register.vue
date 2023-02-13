@@ -90,9 +90,11 @@ import { RouterLink } from 'vue-router'
               </div>
 
               <div class="pt-1 mb-2">
-                <button class="btn btn-dark btn-lg btn-block" type="button">
-                  Register
-                </button>
+                <router-link to="/dashboard" style="color: #393f81"
+                  ><button class="btn btn-dark btn-lg btn-block" type="button">
+                    Register
+                  </button></router-link
+                >
               </div>
 
               <a class="small text-muted" href="#!">Forgot password?</a>
