@@ -6,6 +6,9 @@
       </CHeaderToggler>
       <CHeaderBrand class="mx-auto d-lg-none" to="/">
         <CIcon :icon="logo" height="48" alt="Logo" />
+        <p style="position: relative; top: -12px" class="d-inline-block">
+          COLLEGE DIGITAL
+        </p>
       </CHeaderBrand>
       <CHeaderNav class="d-none d-md-flex me-auto">
         <CNavItem>

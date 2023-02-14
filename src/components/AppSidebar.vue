@@ -12,16 +12,11 @@
     "
   >
     <CSidebarBrand>
-      <!-- <CIcon
+      <CIcon
         custom-class-name="sidebar-brand-full"
         :icon="logoNegative"
         :height="35"
-      /> -->
-      <CIcon
-        custom-class-name="sidebar-brand-narrow"
-        :icon="sygnet"
-        :height="35"
-      />
+      />College Digital
     </CSidebarBrand>
     <AppSidebarNavStudent v-if="type == 'student'" />
     <AppSidebarNavTeacher v-if="type == 'teacher'" />

@@ -55,12 +55,30 @@ const routes = [
             props: true,
             component: () => import('@/views/Student/Courses/ChatMeeting.vue'),
           },
+          {
+            path: '/student/my-courses/meet/:id',
+            name: 'Course Meet',
+            props: true,
+            component: () => import('@/views/Student/Chats/Meet.vue'),
+          },
+          {
+            path: '/student/my-courses/practicals/:id',
+            name: 'Course Practicals',
+            props: true,
+            component: () => import('@/views/Student/Courses/Practicals.vue'),
+          },
+          {
+            path: '/student/my-courses/media/:id',
+            name: 'Media',
+            props: true,
+            component: () => import('@/views/Student/Courses/Media.vue'),
+          },
         ],
       },
       {
         path: '/student/assignment',
         name: 'Student Assignment',
-        component: () => import('@/views/Assignment.vue'),
+        component: () => import('@/views/Student/Assignment.vue'),
       },
       {
         path: '/student/chat',
@@ -71,6 +89,18 @@ const routes = [
         path: 'settings',
         name: 'Settings',
         component: () => import('@/views/Settings.vue'),
+      },
+      {
+        path: '/student/my-exam',
+        name: 'My Exam',
+        redirect: '/student/my-exam/index',
+        children: [
+          {
+            path: '/student/my-exam/index',
+            name: 'My Exams',
+            component: () => import('@/views/Student/Exam/index.vue'),
+          },
+        ],
       },
     ],
   },
@@ -154,11 +184,11 @@ const routes = [
     component: AdminLayout,
     redirect: '/admin/dashboard',
     children: [
-      // {
-      //   path: 'dashboard',
-      //   name: 'Dashboard',
-      //   component: () => import('@/views/Dashboard.vue'),
-      // },
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/Classes.vue'),
+      },
       // {
       //   path: '/my-classes',
       //   name: 'My Classes',

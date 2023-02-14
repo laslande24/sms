@@ -92,6 +92,7 @@ import {
   cilCopy,
   cilListRich,
   cilFolderOpen,
+  cilEducation,
   cilArrowThickToBottom,
 } from '@coreui/icons'
 
@@ -165,6 +166,7 @@ export const iconsSet = Object.assign(
     cilCopy,
     cilFolderOpen,
     cilListRich,
+    cilEducation,
   },
   {
     cifUs,

@@ -1,43 +1,47 @@
 <template>
   <div class="row" v-if="course != null">
-    <div style="background: white; max-height: 78vh" class="col-sm-12 mp pb-4">
+    <div style="background: white; min-height: 78vh" class="col-sm-12 mp pb-4">
       <div>
         <div class="d-flex justify-content-between">
           <h3 style="color: #3c4b64" class="m-2">
             {{ course.name.toUpperCase() }}
           </h3>
           <div class="pt-3 pe-4">
-            <a href="https://coreui.io">
+            <router-link :to="{ name: 'Media', params: { id: course.id } }">
               <CIcon
                 style="color: gold"
                 class="mx-2"
                 icon="cil-folderOpen"
                 size="lg"
               />
-            </a>
+            </router-link>
             <router-link
               :to="{ name: 'Course Chats', params: { id: course.id } }"
             >
               <CIcon class="mx-2" icon="cil-chat-bubble" size="lg" />
             </router-link>
-            <a href="https://coreui.io">
+            <router-link
+              class="meet"
+              :to="{ name: 'Course Meet', params: { id: course.id } }"
+            >
+              <span class=""></span>
               <CIcon
                 style="color: crimson"
                 class="mx-2"
                 icon="cil-video"
                 size="lg"
               />
-            </a>
+            </router-link>
           </div>
         </div>
 
         <br />
         <div class="row details">
-          <div class="col-sm-6 col-md-4">
+          <div class="col-sm-4 col-md-4">
             <label>Lecturer:</label>
             <p class="ps-2">{{ course.lecture }}Jules Akono</p>
           </div>
-          <div class="col-sm-6 col-md-4">
+          <div class="col-sm-4 col-md-4">
             <label>Code:</label>
             <p class="ps-2">{{ course.code.toUpperCase() }}</p>
           </div>
@@ -56,7 +60,7 @@
         </div>
         <br />
         <CRow>
-          <CCol :xs="4">
+          <CCol class="py-2 col-sm-6 col-md-4">
             <CWidgetStatsF
               color="primary"
               title="Chapters"
@@ -75,7 +79,7 @@
               </template>
             </CWidgetStatsF>
           </CCol>
-          <CCol :xs="4">
+          <CCol class="py-2 col-sm-6 col-md-4">
             <CWidgetStatsF color="info" title="Past Papers">
               <template #icon>
                 <CIcon icon="cil-copy" size="xl" />
@@ -93,7 +97,7 @@
               </template>
             </CWidgetStatsF>
           </CCol>
-          <CCol :xs="4">
+          <CCol class="py-2 col-sm-6 col-md-4">
             <CWidgetStatsF
               color="warning"
               title="Mate"
@@ -115,6 +119,28 @@
               </template>
             </CWidgetStatsF>
           </CCol>
+          <CCol class="py-2 col-sm-6 col-md-4">
+            <CWidgetStatsF
+              color="warning"
+              title="Practicals"
+              :value="course.students.length"
+            >
+              <template #icon>
+                <CIcon icon="cil-settings" size="xl" />
+              </template>
+              <template #footer>
+                <router-link
+                  class="font-weight-bold font-xs text-medium-emphasis"
+                  :to="{ name: 'Course Practicals', params: { id: course.id } }"
+                  rel="noopener norefferer"
+                  target="_blank"
+                >
+                  View more
+                  <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
+                </router-link>
+              </template>
+            </CWidgetStatsF>
+          </CCol>
         </CRow>
       </div>
     </div>
@@ -131,6 +157,7 @@
 
 <script>
 import { getCourse } from '@/composables/Course'
+
 import { ref } from 'vue'
 
 export default {
@@ -160,5 +187,18 @@ export default {
 .details label {
   font-weight: lighter;
   width: 90%;
+}
+.meet {
+  position: relative;
+}
+
+.meet > span {
+  height: 5px;
+  width: 5px;
+  background: lime;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 5px;
 }
 </style>

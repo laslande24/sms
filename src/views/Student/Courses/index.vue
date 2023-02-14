@@ -3,12 +3,12 @@
     <div
       v-for="(course, index) in courses"
       :key="index"
-      class="row col-sm-10 col-md-6 col-lg-4 mb-4 px-4"
+      class="row col-sm-9 col-md-6 col-lg-4 mb-4 px-4"
     >
       <CCard class="shadow-sm p-0">
-        <CCardHeader>
+        <CCardHeader class="p-0">
           <div class="img-div">
-            <img src="/img.jp" />
+            <CCardImage orientation="top" :src="Computer" class="h-100" />
           </div>
         </CCardHeader>
         <CCardBody class="pb-0 pt-1">
@@ -20,25 +20,31 @@
             </router-link>
           </div>
           <div class="py-2 pt-3 d-flex justify-content-between">
-            <a href="https://coreui.io">
+            <router-link
+              :to="{ name: 'Course Meet', params: { id: course.id } }"
+            >
               <CIcon
                 style="color: #3b5998"
                 class="mx-2"
                 icon="cil-video"
                 size="lg"
               />
-            </a>
-            <a href="https://coreui.io">
+            </router-link>
+            <router-link
+              :to="{ name: 'Course Details', params: { id: course.id } }"
+            >
               <CIcon
                 style="color: gold"
                 class="mx-2"
                 icon="cil-folderOpen"
                 size="lg"
               />
-            </a>
-            <a href="https://coreui.io">
+            </router-link>
+            <router-link
+              :to="{ name: 'Course Chats', params: { id: course.id } }"
+            >
               <CIcon class="mx-2" icon="cil-chat-bubble" size="lg" />
-            </a>
+            </router-link>
           </div>
         </CCardBody>
       </CCard>
@@ -56,22 +62,12 @@
 
 <script>
 import { ref } from 'vue'
+import Computer from '@/assets/images/computer_science.jpg'
 import { getCourses } from '@/composables/Course'
 
 export default {
-  data() {
-    return {
-      items: [
-        {
-          id: 1,
-          v_id: '01',
-          name: 'Human Organic Biology ',
-          lecturer: 'Doctor Luis Molde',
-          progression: 10,
-        },
-      ],
-    }
-  },
+  data() {},
+
   setup() {
     const item_selected = ref([])
     const all = ref(true)
@@ -83,6 +79,7 @@ export default {
       item_selected,
       all,
       courses,
+      Computer,
     }
   },
 
@@ -111,7 +108,11 @@ export default {
   );
 }
 .img-div {
-  height: 100px;
+  height: 150px;
+}
+
+.img-div img {
+  height: 150px;
 }
 
 a {
