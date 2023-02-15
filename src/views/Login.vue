@@ -71,11 +71,16 @@ import { RouterLink } from 'vue-router'
                 >
                   Login
                 </button>
-              </div>
 
+                <router-link to="/dashboard" style="color: #393f81"
+                  ><button class="btn btn-dark btn-lg btn-block" type="button">
+                    Login
+                  </button></router-link
+                >
+              </div>
               <p class="mb-2 pb-lg-2" style="color: #393f81">
                 Don't have an account?
-                <router-link to="/signup" style="color: #393f81"
+                <router-link to="/register" style="color: #393f81"
                   >Register here</router-link
                 >
                 <!-- <a href="/signup" style="color: #393f81">Register here</a> -->
