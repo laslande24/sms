@@ -4,7 +4,11 @@ export default createStore({
   state: {
     sidebarVisible: '',
     sidebarUnfoldable: false,
-    user: 'Marco Kegne',
+    user: {
+      username: '',
+      email: '',
+      password: '',
+    },
   },
   mutations: {
     toggleSidebar(state) {

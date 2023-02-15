@@ -4,10 +4,10 @@
       <CHeaderToggler class="ps-1" @click="$store.commit('toggleSidebar')">
         <CIcon icon="cil-menu" size="lg" />
       </CHeaderToggler>
-      <CHeaderBrand class="mx-auto d-lg-none" to="/">
+      <CHeaderBrand class="mx-auto d-md-none" to="/">
         <CIcon :icon="logo" height="48" alt="Logo" />
         <p style="position: relative; top: -12px" class="d-inline-block">
-          COLLEGE DIGITAL
+          Yambaya-mo
         </p>
       </CHeaderBrand>
       <CHeaderNav class="d-none d-md-flex me-auto">

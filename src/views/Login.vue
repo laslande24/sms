@@ -14,7 +14,11 @@ import { RouterLink } from 'vue-router'
             <form>
               <div class="d-flex align-items-center mb-3 pb-1">
                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
-                <span class="h1 fw-bold mb-0">Logo</span>
+                <CIcon
+                  custom-class-name="sidebar-brand-full"
+                  :icon="logoNegative"
+                  :height="35"
+                />Yambaya-mo
               </div>
 
               <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
@@ -65,15 +69,8 @@ import { RouterLink } from 'vue-router'
               </div>
 
               <div class="pt-1 mb-2">
-                <button
-                  class="btn btn-dark btn-lg btn-block btn-sm"
-                  type="button"
-                >
-                  Login
-                </button>
-
-                <router-link to="/dashboard" style="color: #393f81"
-                  ><button class="btn btn-dark btn-lg btn-block" type="button">
+                <router-link to="/student" style="color: #393f81"
+                  ><button class="btn btn-dark btn-sm btn-block" type="button">
                     Login
                   </button></router-link
                 >
@@ -102,3 +99,44 @@ import { RouterLink } from 'vue-router'
     </CCard>
   </CCol>
 </template>
+
+<script>
+import { ref } from 'vue'
+import { logoNegative } from '@/assets/brand/logo-negative'
+
+export default {
+  data() {
+    return {}
+  },
+
+  setup() {
+    const user = [
+      {
+        username: 'Kegne Loic',
+        email: 'kegne@gmail.com',
+        password: 'word',
+      },
+      {
+        username: 'Martin Collins',
+        email: 'collins@gmail.com',
+        password: 'word',
+      },
+    ]
+    const data = ref({
+      email: '',
+      password: '',
+    })
+    const but = ref(null)
+
+    const submit = () => {}
+
+    return {
+      submit,
+      data,
+      but,
+      user,
+      logoNegative,
+    }
+  },
+}
+</script>

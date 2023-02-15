@@ -7,6 +7,10 @@ import TeacherLayout from '@/layouts/TeacherLayout.vue'
 
 const routes = [
   {
+    path: '/',
+    redirect: '/login',
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/Login'),
@@ -20,7 +24,7 @@ const routes = [
     path: '/student',
     name: 'Student',
     component: DefaultLayout,
-    redirect: '/student/dashboard',
+    redirect: '/student/my-courses',
     children: [
       {
         path: '/student/dashboard',
@@ -110,16 +114,16 @@ const routes = [
     component: TeacherLayout,
     redirect: '/student/dashboard',
     children: [
-      // {
-      //   path: 'dashboard',
-      //   name: 'Teacher Dashboard',
-      //   component: () => import('@/views/Dashboard.vue'),
-      // },
-      // {
-      //   path: 'my-classes',
-      //   name: 'Teacher My Classes',
-      //   component: () => import('@/views/Classes.vue'),
-      // },
+      {
+        path: 'dashboard',
+        name: 'Teacher Dashboard',
+        component: () => import('@/views/Dashboard.vue'),
+      },
+      {
+        path: 'my-classes',
+        name: 'Teacher My Classes',
+        component: () => import('@/views/Classes.vue'),
+      },
       // {
       //   path: 'personnel',
       //   name: 'Teacher Personnel',

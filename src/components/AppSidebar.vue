@@ -16,7 +16,7 @@
         custom-class-name="sidebar-brand-full"
         :icon="logoNegative"
         :height="35"
-      />College Digital
+      />Yambaya-mo
     </CSidebarBrand>
     <AppSidebarNavStudent v-if="type == 'student'" />
     <AppSidebarNavTeacher v-if="type == 'teacher'" />
