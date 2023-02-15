@@ -112,7 +112,7 @@ const routes = [
     path: '/teacher',
     name: 'Teacher',
     component: TeacherLayout,
-    redirect: '/student/dashboard',
+    redirect: '/teacher/dashboard',
     children: [
       {
         path: 'dashboard',
@@ -124,62 +124,54 @@ const routes = [
         name: 'Teacher My Classes',
         component: () => import('@/views/Classes.vue'),
       },
-      // {
-      //   path: 'personnel',
-      //   name: 'Teacher Personnel',
-      //   component: () => import('@/views/Classes.vue'),
-      // },
-      // {
-      //   path: 'my-courses',
-      //   name: 'Teacher Courses',
-      //   redirect: 'my-courses/index',
-      //   children: [
-      //     {
-      //       path: 'index',
-      //       name: 'All Course',
-      //       component: () => import('@/views/Student/Courses/index.vue'),
-      //     },
-      //     {
-      //       path: 'details/:id',
-      //       name: 'Course Details',
-      //       props: true,
-      //       component: () => import('@/views/Student/Courses/details.vue'),
-      //     },
-      //     {
-      //       path: 'chapters/:id',
-      //       name: 'Course Chapter',
-      //       props: true,
-      //       component: () => import('@/views/Student/Courses/Chapters.vue'),
-      //     },
-      //     {
-      //       path: 'chapters/:id',
-      //       name: 'Course Chapter',
-      //       props: true,
-      //       component: () => import('@/views/Student/Courses/Chapters.vue'),
-      //     },
-      //     {
-      //       path: 'chats/:id',
-      //       name: 'Course Chats',
-      //       props: true,
-      //       component: () => import('@/views/Student/Courses/ChatMeeting.vue'),
-      //     },
-      //   ],
-      // },
-      // {
-      //   path: 'assignment',
-      //   name: 'Teacher Assignment',
-      //   component: () => import('@/views/Assignment.vue'),
-      // },
-      // {
-      //   path: 'chat',
-      //   name: 'Chat',
-      //   component: () => import('@/views/Chat.vue'),
-      // },
-      // {
-      //   path: 'settings',
-      //   name: 'Settings',
-      //   component: () => import('@/views/Settings.vue'),
-      // },
+      {
+        path: '/teacher/my-courses',
+        name: 'Teacher Courses',
+        redirect: '/teacher/my-courses/index',
+        children: [
+          {
+            path: '/teacher/my-courses/index',
+            name: 'Teacher Course',
+            component: () => import('@/views/Student/Courses/index.vue'),
+          },
+          {
+            path: '/teacher/my-courses/details/:id',
+            name: 'Teacher Details',
+            props: true,
+            component: () => import('@/views/Student/Courses/details.vue'),
+          },
+          {
+            path: '/teacher/my-courses/chapters/:id',
+            name: 'Teacher Chapter',
+            props: true,
+            component: () => import('@/views/Student/Courses/Chapters.vue'),
+          },
+          {
+            path: '/teacher/my-courses/chats/:id',
+            name: 'Teacher Chats',
+            props: true,
+            component: () => import('@/views/Student/Courses/ChatMeeting.vue'),
+          },
+          {
+            path: '/teacher/my-courses/meet/:id',
+            name: 'Teacher Meet',
+            props: true,
+            component: () => import('@/views/Student/Chats/Meet.vue'),
+          },
+          {
+            path: '/teacher/my-courses/practicals/:id',
+            name: 'Teacher Practicals',
+            props: true,
+            component: () => import('@/views/Student/Courses/Practicals.vue'),
+          },
+          {
+            path: '/teacher/my-courses/media/:id',
+            name: 'Media',
+            props: true,
+            component: () => import('@/views/Student/Courses/Media.vue'),
+          },
+        ],
+      },
     ],
   },
   {
