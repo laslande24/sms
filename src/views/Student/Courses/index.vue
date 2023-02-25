@@ -8,7 +8,7 @@
       <CCard class="shadow-sm p-0">
         <CCardHeader class="p-0">
           <div class="img-div">
-            <CCardImage orientation="top" :src="Computer" class="h-100" />
+            <img :src="'http://localhost:8000/static/images/' + course.image" />
           </div>
         </CCardHeader>
         <CCardBody class="pb-0 pt-1">
@@ -113,6 +113,7 @@ export default {
 
 .img-div img {
   height: 150px;
+  width: 100%;
 }
 
 a {

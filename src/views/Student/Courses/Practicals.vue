@@ -30,19 +30,24 @@ export default {
   setup() {
     const data = ref([
       {
-        name: 'Graph Therem',
-        path: 'http://localhost:8000/static/simulations/boilogy/color-vision_en.html',
-        type: 'Math',
+        name: 'Voltage and DC',
+        path: 'http://localhost:8000/static/simulations/physic/circuit-construction-kit-ac-virtual-lab_en.html',
+        type: 'Physics',
       },
       {
-        name: 'Vector Addition',
-        path: 'http://localhost:8000/static/simulations/math/math concept/vector-addition_en.html',
-        type: 'Math',
+        name: 'Ohms law',
+        path: 'http://localhost:8000/static/simulations/physic/ohms-law_en.html',
+        type: 'Physics',
       },
       {
-        name: 'Arithmetics',
-        path: 'http://localhost:8000/static/simulations/math/math concept/arithmetic_en.html',
-        type: 'Math',
+        name: 'charges-and-fields_en',
+        path: 'http://localhost:8000/static/simulations/physic/charges-and-fields_en.html',
+        type: 'Physics',
+      },
+      {
+        name: 'Faraday',
+        path: 'http://localhost:8000/static/simulations/physic/faradays-law_fr.html',
+        type: 'Physics',
       },
     ])
 
