@@ -12,18 +12,15 @@
     "
   >
     <CSidebarBrand>
-      <!-- <CIcon
+      <CIcon
         custom-class-name="sidebar-brand-full"
         :icon="logoNegative"
         :height="35"
-      /> -->
-      <CIcon
-        custom-class-name="sidebar-brand-narrow"
-        :icon="sygnet"
-        :height="35"
-      />
+      />Yambaya-mo
     </CSidebarBrand>
-    <AppSidebarNav />
+    <AppSidebarNavStudent v-if="type == 'student'" />
+    <AppSidebarNavTeacher v-if="type == 'teacher'" />
+    <AppSidebarNav v-if="type == 'admin'" />
     <CSidebarToggler
       class="d-none d-lg-flex"
       @click="$store.commit('toggleUnfoldable')"
@@ -34,14 +31,22 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import { AppSidebarNav } from './AppSidebarNav'
+import {
+  AppSidebarNav,
+  AppSidebarNavStudent,
+  AppSidebarNavTeacher,
+} from './AppSidebarNav'
 import { logoNegative } from '@/assets/brand/logo-negative'
 import { sygnet } from '@/assets/brand/sygnet'
+
 export default {
   name: 'AppSidebar',
   components: {
+    AppSidebarNavStudent,
     AppSidebarNav,
+    AppSidebarNavTeacher,
   },
+  props: ['type'],
   setup() {
     const store = useStore()
     return {
