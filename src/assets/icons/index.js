@@ -94,6 +94,7 @@ import {
   cilFolderOpen,
   cilEducation,
   cilArrowThickToBottom,
+  cilHistory,
 } from '@coreui/icons'
 
 export const iconsSet = Object.assign(
@@ -167,6 +168,7 @@ export const iconsSet = Object.assign(
     cilFolderOpen,
     cilListRich,
     cilEducation,
+    cilHistory,
   },
   {
     cifUs,

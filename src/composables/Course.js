@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
+import { base_link } from '@/composables/config'
 
-const base_link = 'http://localhost:8000' //'http://172.20.10.4:8000'
 const getCourses = () => {
   const courses = ref(null)
   const error = ref(null)

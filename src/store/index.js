@@ -5,9 +5,9 @@ export default createStore({
     sidebarVisible: '',
     sidebarUnfoldable: false,
     user: {
-      username: '',
-      email: '',
-      password: '',
+      username: 'rootDNA',
+      email: 'aubindna@gmail.com',
+      password: '123455',
     },
   },
   mutations: {

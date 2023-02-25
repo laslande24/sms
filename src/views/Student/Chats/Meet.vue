@@ -1,7 +1,6 @@
 <template>
   <div id="meetingSDKElement">
     <!-- Zoom Meeting SDK Component View Rendered Here -->
-    <div id="zmmtg-root "></div>
   </div>
   <p v-if="error != null">
     {{ error }}
@@ -10,23 +9,17 @@
 
 <script>
 import axios from 'axios'
-import { ZoomMtg } from '@zoomus/websdk'
+import ZoomMtgEmbedded from '@zoomus/websdk/embedded'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
   name: 'Meet',
-  created() {
-    ZoomMtg.setZoomJSLib('https://source.zoom.us/2.9.5/lib', '/av')
-    ZoomMtg.preLoadWasm()
-    ZoomMtg.prepareWebSDK()
-    // loads language files, also passes any error messages to the ui
-    ZoomMtg.i18n.load('en-US')
-    ZoomMtg.i18n.reload('en-US')
-  },
+  created() {},
 
   setup() {
     const store = useStore()
+    const client = ref(ZoomMtgEmbedded.createClient())
     const data = ref({
       sdkKey: 'uVMpG4HJFMc3JGAGam5gdTWDs3znxNNkw6Cg',
       number: '81491481291',
@@ -36,7 +29,7 @@ export default {
       createMeet: 'http://127.0.0.1:8000/course/meeting',
       signatureEndpoint: 'http://127.0.0.1:4000',
       userEmail: 'aubindna@gmail.com',
-      userName: store.state.user,
+      userName: store.state.user.username,
       registrantToken: '',
       topic: 'Physic: Simple harmonic motion',
     })
@@ -76,29 +69,46 @@ export default {
     }
 
     const startMeeting = (signature) => {
-      ZoomMtg.init({
-        leaveUrl: data.value.leaveUrl,
-        success: (success) => {
-          console.log(success)
-          ZoomMtg.join({
-            meetingNumber: data.value.number,
-            userName: data.value.userName,
-            signature: signature,
-            sdkKey: data.value.sdkKey,
-            userEmail: data.value.userEmail,
-            passWord: data.value.passWord,
-            tk: data.value.registrantToken,
-            success: (success) => {
-              console.log(success)
-            },
-            error: (error) => {
-              console.log(error)
-            },
-          })
+      let meetingSDKElement = document.getElementById('meetingSDKElement')
+
+      client.value.init({
+        debug: true,
+        zoomAppRoot: meetingSDKElement,
+        language: 'en-US',
+        customize: {
+          meetingInfo: [
+            'topic',
+            'host',
+            'mn',
+            'pwd',
+            'telPwd',
+            'invite',
+            'participant',
+            'dc',
+            'enctype',
+          ],
+          toolbar: {
+            buttons: [
+              {
+                text: 'Goal',
+                className: 'CustomButton',
+                onClick: () => {
+                  console.log('custom button')
+                },
+              },
+            ],
+          },
         },
-        error: (error) => {
-          console.log(error)
-        },
+      })
+
+      client.value.join({
+        sdkKey: data.value.sdkKey,
+        signature: signature,
+        meetingNumber: data.value.number,
+        password: data.value.passWord,
+        userName: data.value.userName,
+        userEmail: data.value.userEmail,
+        tk: data.value.registrantToken,
       })
     }
     getMeeting()
@@ -106,17 +116,9 @@ export default {
     return {
       data,
       error,
+      startMeeting,
     }
   },
 }
 </script>
-<style>
-#meetingSDKElement {
-  padding: 5px;
-  overflow: scroll;
-}
-
-#zmmtg-root {
-  margin-top: 50px;
-}
-</style>
+<style></style>
