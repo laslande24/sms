@@ -23,6 +23,7 @@ const getExam = () => {
           let course = (await ans).data
           if (course.success) {
             elt.course = course.data.name
+            elt.image = course.data.image
           }
         } catch (e) {
           //pass
@@ -39,25 +40,38 @@ const getExam = () => {
   return { exams, error, load }
 }
 
-const getQuestion = () => {
-  const question = ref(null)
+const getExamQuestion = (id) => {
+  const questions = ref(null)
+  const exam = ref(null)
   const error = ref(null)
   const load = async () => {
     try {
-      let data = await axios.get(base_link + '/exam/question')
+      let data = await axios.get(base_link + '/exam/' + id)
       let res = await data
+
       if (!res.data.success) {
-        console.log('question', res.data.error)
+        console.log('exam', res.data.error)
         throw res.data.error
       }
-      question.value = res.data.data
+      let ex = await res.data.data
+      try {
+        let ans = axios.get(base_link + '/course/' + ex.course)
+        let course = (await ans).data
+        if (course.success) {
+          ex.course = course.data.name
+          // elt.image = course.data.image
+        }
+      } catch (e) {
+        //pass
+      }
+      exam.value = ex
     } catch (e) {
       error.value = e
       console.log('error', error.value)
     }
   }
 
-  return { question, error, load }
+  return { exam, questions, error, load }
 }
 
 const getAnswer = () => {
@@ -81,4 +95,4 @@ const getAnswer = () => {
   return { answer, error, load }
 }
 
-export { getExam, getQuestion, getAnswer }
+export { getExam, getExamQuestion, getAnswer }

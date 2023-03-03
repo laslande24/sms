@@ -21,6 +21,12 @@ const routes = [
     component: () => import('@/views/Register.vue'),
   },
   {
+    path: '/take-exam/:id',
+    name: 'Take Exam',
+    props: true,
+    component: () => import('@/views/Student/Exam/TakeExam.vue'),
+  },
+  {
     path: '/student',
     name: 'Student',
     component: DefaultLayout,

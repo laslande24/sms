@@ -84,7 +84,7 @@ const navStudent = [
     component: 'CNavItem',
     name: 'Exams',
     to: '/student/my-exam',
-    icon: 'cil-speech',
+    icon: 'cil-description',
   },
   {
     component: 'CNavTitle',

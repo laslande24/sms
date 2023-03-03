@@ -1,5 +1,5 @@
 <template>
-  <div class="my-2">
+  <div class="my-3">
     <div @click="toggle" class="collapse-head">
       <slot name="head"></slot>
       <CIcon
