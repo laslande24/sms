@@ -1,11 +1,31 @@
 import { h, resolveComponent } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
+import GuestLayout from '@/layouts/GuestLayout'
 import DefaultLayout from '@/layouts/DefaultLayout'
 
+//route index
 const routes = [
   {
     path: '/',
+    name: 'Guest',
+    component: GuestLayout,
+    redirect: '/',
+    children: [
+      {
+        path: '',
+        name: 'LandingPage',
+        component: () => import('@/views/guest/LandingPage.vue'),
+      },
+      {
+        path: 'about',
+        name: 'AboutPage',
+        component: () => import('@/views/guest/AboutPage.vue'),
+      },
+    ],
+  },
+  {
+    path: '/login',
     name: 'Login',
     component: () => import('@/views/Login'),
   },
@@ -18,35 +38,34 @@ const routes = [
     path: '/dashboard',
     name: 'Home',
     component: DefaultLayout,
-    redirect: '/dashboard',
     children: [
       {
-        path: '/dashboard',
+        path: '',
         name: 'Dashboard',
         component: () => import('@/views/Dashboard.vue'),
       },
       {
-        path: '/my-classes',
+        path: 'my-classes',
         name: 'My Classes',
         component: () => import('@/views/Classes.vue'),
       },
       {
-        path: '/my-courses',
+        path: 'my-courses',
         name: 'My Courses',
         component: () => import('@/views/Courses.vue'),
       },
       {
-        path: '/assignment',
+        path: 'assignment',
         name: 'Assignment',
         component: () => import('@/views/Assignment.vue'),
       },
       {
-        path: '/chat',
+        path: 'chat',
         name: 'Chat',
         component: () => import('@/views/Chat.vue'),
       },
       {
-        path: '/settings',
+        path: 'settings',
         name: 'Settings',
         component: () => import('@/views/Settings.vue'),
       },
