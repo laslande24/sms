@@ -14,14 +14,13 @@ import { RouterLink } from 'vue-router'
           >
             <form>
               <div class="d-flex align-items-center mb-3 pb-1">
-<<<<<<< HEAD
                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
                 <CIcon
                   custom-class-name="sidebar-brand-full"
                   :icon="logoNegative"
                   :height="35"
                 />Yambaya-mo
-=======
+
                 <img
                   src="@/assets/images/logo.png"
                   alt=""
@@ -29,7 +28,6 @@ import { RouterLink } from 'vue-router'
                   class="d-inline-block align-top"
                 />
                 <span class="h1 fw-bold mb-0">Yambaya-mo</span>
->>>>>>> cc672f8055aaea9c0fe1fde35eed1d1da45ab8ab
               </div>
 
               <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
