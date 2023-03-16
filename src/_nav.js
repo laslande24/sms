@@ -4,10 +4,6 @@ export default [
     name: 'Dashboard',
     to: '/dashboard',
     icon: 'cil-speedometer',
-    badge: {
-      color: 'primary',
-      text: 'NEW',
-    },
   },
   {
     component: 'CNavTitle',
@@ -16,26 +12,32 @@ export default [
   {
     component: 'CNavItem',
     name: 'My Classes',
-    to: 'my-classes',
+    to: '/dashboard/my-classes',
     icon: 'cil-school',
   },
   {
     component: 'CNavItem',
     name: 'My Courses',
-    to: 'my-courses',
+    to: '/dashboard/my-courses',
     icon: 'cil-book',
   },
   {
     component: 'CNavItem',
     name: 'Assignment',
-    to: 'Assignment',
+    to: '/dashboard/assignment',
     icon: 'cil-layers',
   },
   {
     component: 'CNavItem',
     name: 'Chat',
-    to: 'Chat',
+    to: '/dashboard/chat',
     icon: 'cil-speech',
+  },
+  {
+    component: 'CNavItem',
+    name: 'Assistant',
+    to: '/dashboard/bot',
+    icon: 'cib-probot',
   },
   {
     component: 'CNavTitle',
@@ -44,7 +46,7 @@ export default [
   {
     component: 'CNavItem',
     name: 'Settings',
-    to: 'Settings',
+    to: '/dashboard/settings',
     icon: 'cil-settings',
   },
   {
