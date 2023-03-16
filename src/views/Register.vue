@@ -18,8 +18,13 @@ import { RouterLink } from 'vue-router'
           <div class="px-4 px-lg-3 text-black align-items-center">
             <form>
               <div class="d-flex align-items-center mb-3 pb-1">
-                <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
-                <span class="h1 fw-bold mb-0">Logo</span>
+                <img
+                  src="@/assets/images/logo.png"
+                  alt=""
+                  height="55"
+                  class="d-inline-block align-top"
+                />
+                <span class="h1 fw-bold mb-0">Yambaya-mo</span>
               </div>
 
               <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
@@ -97,8 +102,7 @@ import { RouterLink } from 'vue-router'
                 >
               </div>
 
-              <a class="small text-muted" href="#!">Forgot password?</a>
-              <p class="mb-1" style="color: #393f81">
+              <p class="mb-1 mt-2" style="color: #393f81">
                 Already have an account?
                 <router-link to="/" style="color: #393f81; font-size: large"
                   >Signin to your account</router-link
@@ -108,33 +112,6 @@ import { RouterLink } from 'vue-router'
                       > -->
               </p>
             </form>
-          </div>
-          <div
-            class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-3 px-3 px-xl-4"
-            style="border-radius: 0 0 1rem 0 background-color: #f19e10"
-          >
-            <!-- Copyright -->
-            <div class="text-white mb-3 mb-md-0">
-              Copyright © 2020. All rights reserved.
-            </div>
-            <!-- Copyright -->
-
-            <!-- Right -->
-            <div>
-              <a href="#!" class="text-white me-4">
-                <i class="bi bi-facebook"></i>
-              </a>
-              <a href="#!" class="text-white me-4">
-                <i class="bi bi-twitter"></i>
-              </a>
-              <a href="#!" class="text-white me-4">
-                <i class="bi bi-google"></i>
-              </a>
-              <a href="#!" class="text-white">
-                <i class="bi bi-linkedin"></i>
-              </a>
-            </div>
-            <!-- Right -->
           </div>
         </div>
       </div>
