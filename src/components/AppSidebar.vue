@@ -17,17 +17,20 @@
         :icon="logoNegative"
         :height="35"
       /> -->
-      <CIcon
-        custom-class-name="sidebar-brand-narrow"
-        :icon="sygnet"
-        :height="35"
+      <img
+        src="@/assets/images/logo.png"
+        alt=""
+        width="22"
+        height="24"
+        class="d-inline-block align-top"
       />
+      <span class="ms-1">Yambaya-mo</span>
     </CSidebarBrand>
     <AppSidebarNav />
-    <CSidebarToggler
-      class="d-none d-lg-flex"
-      @click="$store.commit('toggleUnfoldable')"
-    />
+    <!--    <CSidebarToggler-->
+    <!--      class="d-none d-lg-flex"-->
+    <!--      @click="$store.commit('toggleUnfoldable')"-->
+    <!--    />-->
   </CSidebar>
 </template>
 
