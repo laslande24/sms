@@ -1,9 +1,13 @@
+<script setup>
+import { RouterLink } from 'vue-router'
+</script>
+
 <template>
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative">
       <h1>Learning Today,<br />Leading Tomorrow</h1>
       <h2>Open your minds with the help of talented teachers</h2>
-      <a href="#" class="btn-get-started">Get Started</a>
+      <router-link to="/login" class="btn-get-started">Get Started</router-link>
     </div>
   </section>
   <main id="main">
@@ -285,9 +289,6 @@
 </template>
 
 <style scoped>
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 a {
   color: #5fcf80;
   text-decoration: none;
@@ -428,6 +429,7 @@ section {
   font-family: 'Poppins', sans-serif;
   color: #37423b;
 }
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
