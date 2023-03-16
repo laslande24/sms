@@ -65,6 +65,11 @@ const routes = [
         component: () => import('@/views/Chat.vue'),
       },
       {
+        path: 'bot',
+        name: 'Assistant',
+        component: () => import('@/views/Chatbot.vue'),
+      },
+      {
         path: 'settings',
         name: 'Settings',
         component: () => import('@/views/Settings.vue'),
