@@ -8,7 +8,7 @@
       <CCard class="shadow-sm p-0">
         <CCardHeader class="p-0">
           <div class="img-div">
-            <img :src="'http://localhost:8000/static/images/' + course.image" />
+            <img :src="base_link() + '/static/images/' + course.image" />
           </div>
         </CCardHeader>
         <CCardBody class="pb-0 pt-1">
@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import { base_link } from '@/composables/config'
 import { ref } from 'vue'
 import Computer from '@/assets/images/computer_science.jpg'
 import { getCourses } from '@/composables/Course'
@@ -84,6 +85,9 @@ export default {
   },
 
   methods: {
+    base_link() {
+      return base_link
+    },
     downloadPdf(link) {
       window.open(link, '_blank')
     },

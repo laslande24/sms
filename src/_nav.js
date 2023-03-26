@@ -82,6 +82,12 @@ const navStudent = [
   },
   {
     component: 'CNavItem',
+    name: 'Assistant',
+    to: '/student/assistant',
+    icon: 'cib-probot',
+  },
+  {
+    component: 'CNavItem',
     name: 'Exams',
     to: '/student/my-exam',
     icon: 'cil-speech',
@@ -158,16 +164,16 @@ const navTeacher = [
 ]
 
 const navAdmin = [
-  // {
-  //   component: 'CNavItem',
-  //   name: 'Dashboard',
-  //   to: '/dashboard',
-  //   icon: 'cil-speedometer',
-  //   // badge: {
-  //   //   color: 'primary',
-  //   //   text: 'NEW',
-  //   // },
-  // },
+  {
+    component: 'CNavItem',
+    name: 'Admin Dashboard',
+    to: '/dashboard',
+    icon: 'cil-speedometer',
+    // badge: {
+    //   color: 'primary',
+    //   text: 'NEW',
+    // },
+  },
   {
     component: 'CNavItem',
     name: 'Personnels',

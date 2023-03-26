@@ -1,3 +1,3 @@
-const base_link = 'http://127.0.0.1:8000'
+const base_link = 'http://172.16.9.156:8000'
 
 export { base_link }

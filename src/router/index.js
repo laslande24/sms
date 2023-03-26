@@ -4,11 +4,25 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DefaultLayout from '@/layouts/DefaultLayout'
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import TeacherLayout from '@/layouts/TeacherLayout.vue'
-
+import GuestLayout from '@/layouts/GuestLayout'
 const routes = [
   {
     path: '/',
-    redirect: '/login',
+    name: 'Guest',
+    component: GuestLayout,
+    redirect: '/',
+    children: [
+      {
+        path: '',
+        name: 'LandingPage',
+        component: () => import('@/views/guest/LandingPage.vue'),
+      },
+      {
+        path: 'about',
+        name: 'AboutPage',
+        component: () => import('@/views/guest/AboutPage.vue'),
+      },
+    ],
   },
   {
     path: '/login',
@@ -94,6 +108,11 @@ const routes = [
         path: '/student/chat',
         name: 'Student Chat',
         component: () => import('@/views/Chat.vue'),
+      },
+      {
+        path: '/student/assistant',
+        name: 'Assistant',
+        component: () => import('@/views/Chatbot.vue'),
       },
       {
         path: 'settings',
@@ -188,7 +207,7 @@ const routes = [
     children: [
       {
         path: 'dashboard',
-        name: 'Dashboard',
+        name: 'Admin Dashboard',
         component: () => import('@/views/Classes.vue'),
       },
       // {
