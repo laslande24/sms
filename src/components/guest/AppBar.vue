@@ -15,10 +15,10 @@
       <CCollapse class="navbar-collapse" :visible="visible">
         <CNavbarNav class="ms-auto">
           <CNavItem class="mx-2">
-            <CNavLink href="#">Home</CNavLink>
+            <router-link to="/"> <CNavLink>Home</CNavLink></router-link>
           </CNavItem>
           <CNavItem class="mx-2">
-            <CNavLink href="#/about">About</CNavLink>
+            <router-link to="/about"> <CNavLink>About</CNavLink></router-link>
           </CNavItem>
           <CNavItem class="mx-2">
             <CNavLink href="javascript:;">Schedule</CNavLink>
@@ -38,9 +38,9 @@
             </CDropdownMenu>
           </CDropdown>
           <CNavItem class="mx-2">
-            <CNavLink href="#/login" class="get-started-btn">
-              Get Started
-            </CNavLink>
+            <router-link to="/login">
+              <CNavLink class="get-started-btn"> Get Started </CNavLink>
+            </router-link>
           </CNavItem>
         </CNavbarNav>
       </CCollapse>

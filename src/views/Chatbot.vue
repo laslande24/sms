@@ -11,7 +11,7 @@
         </div>
         <div class="panel-body">
           <div class="chats" v-for="message in messages" :key="message.id">
-            <div v-if="message.isBot" class="chat">
+            <div v-if="message.isBot" class="chat chat-left">
               <div class="chat-avatar">
                 <a
                   class="avatar avatar-online"
@@ -21,10 +21,7 @@
                   title=""
                   data-original-title="June Lane"
                 >
-                  <img
-                    src="./../../src/assets/images/avatars/4.jpg"
-                    alt="..."
-                  />
+                  <img src="./../../src/assets/images/bot.png" alt="..." />
                   <i></i>
                 </a>
               </div>
@@ -37,7 +34,7 @@
                 </div>
               </div>
             </div>
-            <div v-else class="chat chat-left">
+            <div v-else class="chat">
               <div class="chat-avatar">
                 <a
                   class="avatar avatar-online"
@@ -46,7 +43,10 @@
                   data-placement="left"
                   data-original-title="Edward Fletcher"
                 >
-                  <img src="./../../src/assets/images/bot.png" alt="bot" />
+                  <img
+                    src="./../../src/assets/images/avatars/4.jpg"
+                    alt="bot"
+                  />
                   <i></i>
                 </a>
               </div>
