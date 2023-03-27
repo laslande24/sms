@@ -45,6 +45,12 @@ export default [
   },
   {
     component: 'CNavItem',
+    name: 'Account',
+    to: '/dashboard/account',
+    icon: 'cil-user',
+  },
+  {
+    component: 'CNavItem',
     name: 'Settings',
     to: '/dashboard/settings',
     icon: 'cil-settings',

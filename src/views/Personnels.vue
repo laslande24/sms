@@ -1,5 +1,24 @@
 <template>
   <CContainer class="position-relative vh-100">
+    <div class="d-flex mb-2">
+      <CCol>
+        <input class="div-control me-2" type="search" placeholder="Search" />
+        <CButton class="btn btn-outline-success">
+          <CIcon icon="cil-search" size="lg" />
+        </CButton>
+      </CCol>
+      <button
+        class="btn btn-outline-success"
+        @click="
+          () => {
+            addPersonnelModal = true
+          }
+        "
+      >
+        Add Personnel
+      </button>
+    </div>
+
     <table class="table table-hover table-striped">
       <thead>
         <tr class="table-primary">
@@ -116,6 +135,7 @@
     <CModal
       scrollable
       :visible="visibleScrollableDemo"
+      size="xl"
       @close="
         () => {
           visibleScrollableDemo = false
@@ -123,76 +143,367 @@
       "
     >
       <CModalHeader>
-        <CModalTitle>Personnel Information</CModalTitle>
+        <CModalTitle>Employee Information</CModalTitle>
       </CModalHeader>
       <CModalBody>
-        <CCol>
-          <CRow class="mb-4 d-flex justify-content-center align-items-center">
-            <CAvatar color="primary" text-color="white" size="xl">JJ</CAvatar>
-          </CRow>
-          <div class="row mb-4">
-            <div class="form-floating col-lg-6">
-              <input
-                class="form-control"
-                id="firstName"
-                type="text"
-                placeholder="Jule"
-                disabled
-              />
-              <label for="floatingInput" class="text-center">Jule</label>
-            </div>
-            <div class="form-floating col-lg-6">
-              <input
-                class="form-control"
-                id="lastName"
-                type="text"
-                placeholder="Jule"
-                disabled
-              />
-              <label for="floatingInput" class="text-center">Jule</label>
+        <div class="row flex-lg-nowrap">
+          <div class="col mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="e-profile">
+                  <div class="row">
+                    <div class="col-12 col-sm-auto mb-3">
+                      <div class="mx-auto" style="width: 140px">
+                        <div
+                          class="d-flex justify-content-center align-items-center rounded"
+                          style="
+                            height: 140px;
+                            background-color: rgb(233, 236, 239);
+                          "
+                        >
+                          <span
+                            style="
+                              color: rgb(166, 168, 170);
+                              font: bold 8pt Arial;
+                            "
+                            >140x140</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="col d-flex flex-column flex-sm-row justify-content-between mb-3"
+                    >
+                      <div class="text-center text-sm-left mb-2 mb-sm-0">
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">
+                          John Smith
+                        </h4>
+                        <p class="mb-0">@johnny.s</p>
+                        <div class="text-muted">
+                          <small>Last seen 2 hours ago</small>
+                        </div>
+                        <div class="mt-2">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fa fa-fw fa-camera"></i>
+                            <span>Change Photo</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="text-center text-sm-right">
+                        <span class="badge badge-secondary">administrator</span>
+                        <div class="text-muted">
+                          <small>Joined 09 Dec 2017</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a href="" class="active nav-link">Settings</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-3">
+                    <div class="tab-pane active">
+                      <form class="form" novalidate="">
+                        <div class="row">
+                          <div class="col">
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Full Name</label>
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="name"
+                                    placeholder="John Smith"
+                                    value="John Smith"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Username</label>
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="username"
+                                    placeholder="johnny.s"
+                                    value="johnny.s"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="user@example.com"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col mb-3">
+                                <div class="form-group">
+                                  <label>About</label>
+                                  <textarea
+                                    class="form-control"
+                                    rows="5"
+                                    placeholder="My Bio"
+                                  ></textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-sm-6 mb-3">
+                            <div class="mb-2"><b>Change Password</b></div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Current Password</label>
+                                  <input
+                                    class="form-control"
+                                    type="password"
+                                    placeholder="••••••"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>New Password</label>
+                                  <input
+                                    class="form-control"
+                                    type="password"
+                                    placeholder="••••••"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label
+                                    >Confirm
+                                    <span class="d-none d-xl-inline"
+                                      >Password</span
+                                    ></label
+                                  >
+                                  <input
+                                    class="form-control"
+                                    type="password"
+                                    placeholder="••••••"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col d-flex justify-content-end">
+                            <button class="btn btn-primary" type="submit">
+                              Save Changes
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <input
-            class="form-control mb-4"
-            id="email"
-            type="text"
-            placeholder="jule@gmail.com"
-            disabled
-          />
-          <input class="form-control mb-4" id="date" type="date" disabled />
-          <input class="form-control mb-4" id="phone" type="number" disabled />
-        </CCol>
+        </div>
       </CModalBody>
     </CModal>
 
-    <!-- Delete personnel Modal -->
+    <!-- add personnel Modal -->
     <CModal
-      :visible="visibleVerticallyCenteredDemo"
+      scrollable
+      size="xl"
+      :visible="addPersonnelModal"
       @close="
         () => {
-          visibleVerticallyCenteredDemo = false
+          addPersonnelModal = false
         }
       "
     >
       <CModalHeader>
-        <CModalTitle>Delete Personnel</CModalTitle>
+        <CModalTitle>Add new personnel</CModalTitle>
       </CModalHeader>
-      <CModalBody class="d-flex justify-content-center align-items-center">
-        Do you really want to delete this personnel?
+      <CModalBody style="background-color: #f8f8f8">
+        <div class="row flex-lg-nowrap">
+          <div class="col mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="e-profile">
+                  <div class="row">
+                    <div class="col-12 col-sm-auto mb-3">
+                      <div class="mx-auto" style="width: 140px">
+                        <div
+                          class="d-flex justify-content-center align-items-center rounded"
+                          style="
+                            height: 140px;
+                            background-color: rgb(233, 236, 239);
+                          "
+                        >
+                          <span
+                            style="
+                              color: rgb(166, 168, 170);
+                              font: bold 8pt Arial;
+                            "
+                            >140x140</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="col d-flex flex-column flex-sm-row justify-content-between mb-3"
+                    >
+                      <div class="text-center text-sm-left mb-2 mb-sm-0">
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">
+                          John Smith
+                        </h4>
+                        <p class="mb-0">@johnny.s</p>
+                        <div class="mt-2">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fa fa-fw fa-camera"></i>
+                            <span>Change Photo</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a href="" class="active nav-link">Settings</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-3">
+                    <div class="tab-pane active">
+                      <form class="form" novalidate="">
+                        <div class="row">
+                          <div class="col">
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Full Name</label>
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="name"
+                                    placeholder="John Smith"
+                                    value="John Smith"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Username</label>
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="username"
+                                    placeholder="johnny.s"
+                                    value="johnny.s"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="user@example.com"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col mb-3">
+                                <div class="form-group">
+                                  <label>About</label>
+                                  <textarea
+                                    class="form-control"
+                                    rows="5"
+                                    placeholder="My Bio"
+                                  ></textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-sm-6 mb-3">
+                            <div class="mb-2"><b>Change Password</b></div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Current Password</label>
+                                  <input
+                                    class="form-control"
+                                    type="password"
+                                    placeholder="••••••"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>New Password</label>
+                                  <input
+                                    class="form-control"
+                                    type="password"
+                                    placeholder="••••••"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label
+                                    >Confirm
+                                    <span class="d-none d-xl-inline"
+                                      >Password</span
+                                    ></label
+                                  >
+                                  <input
+                                    class="form-control"
+                                    type="password"
+                                    placeholder="••••••"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col d-flex justify-content-end">
+                            <button class="btn btn-primary" type="submit">
+                              Save Changes
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </CModalBody>
-      <CModalFooter>
-        <CButton
-          color="secondary"
-          @click="
-            () => {
-              visibleVerticallyCenteredDemo = false
-            }
-          "
-        >
-          No
-        </CButton>
-        <CButton color="primary">Yes</CButton>
-      </CModalFooter>
     </CModal>
   </CContainer>
 </template>
@@ -210,6 +521,7 @@ export default {
   components: {},
   data() {
     return {
+      addPersonnelModal: false,
       visibleScrollableDemo: false,
       visibleVerticallyCenteredDemo: false,
     }
