@@ -3,18 +3,16 @@
     variant="tabs"
     role="tablist"
     class="d-flex gap-3"
-    style="justify-content: center"
-  >
+    style="justify-content: center">
     <CNavItem>
       <CNavLink
         href="javascript:void(0);"
         :active="tabPanePillsActiveKey === 1"
         @click="
           () => {
-            tabPanePillsActiveKey = 1
+            tabPanePillsActiveKey = 1;
           }
-        "
-      >
+        ">
         Document
       </CNavLink>
     </CNavItem>
@@ -24,10 +22,9 @@
         :active="tabPanePillsActiveKey === 2"
         @click="
           () => {
-            tabPanePillsActiveKey = 2
+            tabPanePillsActiveKey = 2;
           }
-        "
-      >
+        ">
         Image
       </CNavLink>
     </CNavItem>
@@ -36,8 +33,7 @@
     <CTabPane
       role="tabpanel"
       aria-labelledby="active-tab"
-      :visible="tabPanePillsActiveKey === 1"
-    >
+      :visible="tabPanePillsActiveKey === 1">
       <CAccordion :active-item-key="0" class="d-flex flex-column gap-4">
         <div class="bg-white">
           <div class="d-flex my-2">
@@ -53,8 +49,7 @@
                     class="mx-2 icon-dir"
                     ref="icon"
                     icon="cil-arrowThickToBottom"
-                    size="lg"
-                  />
+                    size="lg" />
                   download
                 </a>
               </div>
@@ -66,8 +61,7 @@
     <CTabPane
       role="tabpanel"
       aria-labelledby="profile-tab"
-      :visible="tabPanePillsActiveKey === 2"
-    >
+      :visible="tabPanePillsActiveKey === 2">
       <CAccordion :active-item-key="0" class="d-flex flex-column gap-4">
         <div class="bg-white p-2">
           <div class="d-flex flex-wrap">
@@ -85,10 +79,9 @@
     :visible="visibleVerticallyCenteredDemo"
     @close="
       () => {
-        visibleVerticallyCenteredDemo = false
+        visibleVerticallyCenteredDemo = false;
       }
-    "
-  >
+    ">
     <CModalHeader>
       <CModalTitle>Submit assignment</CModalTitle>
     </CModalHeader>
@@ -98,8 +91,7 @@
           type="file"
           id="exampleFormControlInput1"
           :label="ass.name"
-          placeholder="choice file"
-        />
+          placeholder="choice file" />
       </CForm>
     </CModalBody>
     <CModalFooter>
@@ -107,10 +99,9 @@
         color="secondary"
         @click="
           () => {
-            visibleVerticallyCenteredDemo = false
+            visibleVerticallyCenteredDemo = false;
           }
-        "
-      >
+        ">
         Close
       </CButton>
       <CButton color="primary">Save changes</CButton>
@@ -118,41 +109,41 @@
   </CModal>
 </template>
 <script>
-import { computed, ref } from 'vue'
-import Computer from '@/assets/images/computer_science.jpg'
-import { getAssignment } from '@/composables/Course'
+import { computed, ref } from 'vue';
+import Computer from '@/assets/images/computer_science.jpg';
+import { getAssignment } from '@/composables/Course';
 
 export default {
   name: 'Media',
   data() {
-    return {}
+    return {};
   },
   setup() {
-    const { error, assignments, load } = getAssignment()
-    const tabPanePillsActiveKey = ref(1)
-    const visibleVerticallyCenteredDemo = ref(false)
-    const ass = ref(null)
-    load()
+    const { error, assignments, load } = getAssignment();
+    const tabPanePillsActiveKey = ref(1);
+    const visibleVerticallyCenteredDemo = ref(false);
+    const ass = ref(null);
+    load();
     const data = computed(() => {
-      let date = new Date()
+      let date = new Date();
       if (assignments.value != null) {
         if (tabPanePillsActiveKey.value == 1) {
           return assignments.value.filter(
             (value) => new Date(value.submit).getTime() >= date.getTime(),
-          )
+          );
         } else {
           return assignments.value.filter(
             (value) => new Date(value.submit).getTime() <= date.getTime(),
-          )
+          );
         }
       } else {
-        return null
+        return null;
       }
-    })
+    });
     const modal = (index) => {
-      ass.value = data.value[index]
-      visibleVerticallyCenteredDemo.value = true
-    }
+      ass.value = data.value[index];
+      visibleVerticallyCenteredDemo.value = true;
+    };
 
     return {
       error,
@@ -163,9 +154,9 @@ export default {
       visibleVerticallyCenteredDemo,
       modal,
       Computer,
-    }
+    };
   },
-}
+};
 </script>
 <style>
 .div-pre {

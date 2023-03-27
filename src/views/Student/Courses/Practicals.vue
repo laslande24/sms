@@ -3,15 +3,13 @@
     <div
       v-for="(value, index) in data"
       :key="index"
-      class="col-sm-6 col-md-4 col-lg-3"
-    >
+      class="col-sm-6 col-md-4 col-lg-3">
       <div class="prat bg-white shadow-sm p-2">
         <div class="prat-head">
           <iframe
             :src="value.path"
             name="targetframe"
-            allowTransparency="true"
-          ></iframe>
+            allowTransparency="true"></iframe>
         </div>
         <div class="prat-body">
           <a target="_blank" :href="value.path">{{ value.name }}</a>
@@ -23,7 +21,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 export default {
   name: 'Practicals',
@@ -49,13 +47,13 @@ export default {
         path: 'http://localhost:8000/static/simulations/physic/faradays-law_fr.html',
         type: 'Physics',
       },
-    ])
+    ]);
 
     return {
       data,
-    }
+    };
   },
-}
+};
 </script>
 
 <style scoped>

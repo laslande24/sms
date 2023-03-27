@@ -19,7 +19,7 @@
 export default {
   name: 'NotificationHeader',
   setup() {
-    return {}
+    return {};
   },
-}
+};
 </script>

@@ -19,7 +19,8 @@
 export default {
   name: 'MessageHeader',
   setup() {
-    return {}
+    return {};
   },
-}
+};
 </script>
+

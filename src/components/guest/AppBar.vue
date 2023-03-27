@@ -7,8 +7,7 @@
           alt=""
           width="22"
           height="24"
-          class="d-inline-block align-top"
-        />
+          class="d-inline-block align-top" />
         Yambaya-mo
       </CNavbarBrand>
       <CNavbarToggler @click="visible = !visible" />
@@ -149,7 +148,8 @@ export default {
   data() {
     return {
       visible: false,
-    }
+    };
   },
-}
+};
 </script>
+

@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { RouterLink } from 'vue-router';
 //login vue
 </script>
 
@@ -10,8 +10,7 @@ import { RouterLink } from 'vue-router'
         <div class="col-md-6 col-lg-6">
           <div
             class="p-4 p-lg-4 text-black align-items-center"
-            style="background-color: #ebedeb; border-radius: 1rem 0 0 1rem"
-          >
+            style="background-color: #ebedeb; border-radius: 1rem 0 0 1rem">
             <form @submit.prevent="submit">
               <div class="d-flex align-items-center mb-3 pb-1">
                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
@@ -20,8 +19,7 @@ import { RouterLink } from 'vue-router'
                   src="@/assets/images/logo.png"
                   alt=""
                   height="55"
-                  class="d-inline-block align-top"
-                />
+                  class="d-inline-block align-top" />
                 <span class="h1 fw-bold mb-0">Yambaya-mo</span>
               </div>
 
@@ -36,8 +34,7 @@ import { RouterLink } from 'vue-router'
                   id="email"
                   type="email"
                   placeholder="Enter your last name"
-                  required
-                />
+                  required />
                 <label for="floatingInput">Email address</label>
               </div>
 
@@ -48,22 +45,19 @@ import { RouterLink } from 'vue-router'
                   id="password"
                   type="password"
                   placeholder="Enter your last name"
-                  required
-                />
+                  required />
                 <label for="floatingInput">password</label>
               </div>
 
               <div
-                class="form-outline mb-4 d-flex justify-content-between align-items-center"
-              >
+                class="form-outline mb-4 d-flex justify-content-between align-items-center">
                 <!-- Checkbox -->
                 <div class="form-check mb-0">
                   <input
                     class="form-check-input me-2"
                     type="checkbox"
                     value=""
-                    id="form2Example3"
-                  />
+                    id="form2Example3" />
                   <label class="form-check-label" for="form2Example3">
                     Remember me
                   </label>
@@ -78,8 +72,7 @@ import { RouterLink } from 'vue-router'
                 <button
                   type="submit"
                   @click="submit"
-                  class="btn btn-dark btn-block"
-                >
+                  class="btn btn-dark btn-block">
                   Login
                 </button>
               </div>
@@ -100,8 +93,7 @@ import { RouterLink } from 'vue-router'
             src="https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YWZyaWNhbiUyMHN0dWRlbnRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60"
             alt="login form"
             class="img-fluid"
-            style="border-radius: 0 1rem 1rem 0; height: 100%"
-          />
+            style="border-radius: 0 1rem 1rem 0; height: 100%" />
         </div>
       </div>
     </CCard>
@@ -109,12 +101,12 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <script>
-import { ref } from 'vue'
-import { logoNegative } from '@/assets/brand/logo-negative'
+import { ref } from 'vue';
+import { logoNegative } from '@/assets/brand/logo-negative';
 
 export default {
   data() {
-    return {}
+    return {};
   },
 
   setup() {
@@ -137,38 +129,38 @@ export default {
         password: 'word',
         role: 'admin',
       },
-    ]
-    const email = ref('')
+    ];
+    const email = ref('');
     const error = ref({
       user: false,
       password: false,
-    })
-    const password = ref('')
-    const but = ref(null)
+    });
+    const password = ref('');
+    const but = ref(null);
 
     const submit = () => {
-      console.log(email.value, password.value)
+      console.log(email.value, password.value);
       let logUser = user.value.filter((elt) => {
         if (elt.email == email.value) {
           if (elt.password == password.value) {
-            return true
+            return true;
           }
-          error.value.password = true
-          return false
+          error.value.password = true;
+          return false;
         }
-        error.value.user = true
-        return false
-      })
+        error.value.user = true;
+        return false;
+      });
       if (logUser.count == 1) {
         if (logUser[0].type == 'admin') {
-          this.push({ name: 'Admin Dashboard' })
+          this.push({ name: 'Admin Dashboard' });
         } else if (logUser[0].type == 'lecturer') {
-          this.push({ name: 'Teacher Dashboard' })
+          this.push({ name: 'Teacher Dashboard' });
         } else {
-          this.push({ name: 'My Courses' })
+          this.push({ name: 'My Courses' });
         }
       }
-    }
+    };
 
     return {
       submit,
@@ -177,7 +169,8 @@ export default {
       but,
       user,
       logoNegative,
-    }
+    };
   },
-}
+};
 </script>
+

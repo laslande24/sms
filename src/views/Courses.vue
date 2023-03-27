@@ -3,8 +3,7 @@
     class="container p-3"
     data-bs-spy="scroll"
     data-bs-target=".navbar"
-    data-bs-offset="50"
-  >
+    data-bs-offset="50">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
       <div class="container-fluid">
         <ul class="navbar-nav">
@@ -89,8 +88,7 @@
     <div
       id="question1"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 1</h2>
@@ -147,8 +145,7 @@
     <div
       id="question2"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 2</h2>
@@ -205,8 +202,7 @@
     <div
       id="question3"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 3</h2>
@@ -263,8 +259,7 @@
     <div
       id="question4"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 4</h2>
@@ -321,8 +316,7 @@
     <div
       id="question5"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 5</h2>
@@ -379,8 +373,7 @@
     <div
       id="question6"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 6</h2>
@@ -436,8 +429,7 @@
     <div
       id="question7"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 7</h2>
@@ -494,8 +486,7 @@
     <div
       id="question8"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 8</h2>
@@ -552,8 +543,7 @@
     <div
       id="question9"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 9</h2>
@@ -609,8 +599,7 @@
     <div
       id="question10"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 10</h2>
@@ -667,8 +656,7 @@
     <div
       id="question11"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 11</h2>
@@ -725,8 +713,7 @@
     <div
       id="question12"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 12</h2>
@@ -782,8 +769,7 @@
     <div
       id="question13"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 13</h2>
@@ -840,8 +826,7 @@
     <div
       id="question14"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 14</h2>
@@ -898,8 +883,7 @@
     <div
       id="question15"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 15</h2>
@@ -955,8 +939,7 @@
     <div
       id="question16"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 16</h2>
@@ -1013,8 +996,7 @@
     <div
       id="question17"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 17</h2>
@@ -1071,8 +1053,7 @@
     <div
       id="question18"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 18</h2>
@@ -1128,8 +1109,7 @@
     <div
       id="question19"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 19</h2>
@@ -1186,8 +1166,7 @@
     <div
       id="question20"
       class="container-fluid text-dark"
-      style="padding: 100px 20px"
-    >
+      style="padding: 100px 20px">
       <div class="card">
         <div class="card-header bg-success text-center text-white">
           <h2 class="fs-2">Question No 20</h2>
@@ -1251,3 +1230,4 @@
   background-color: white;
 }
 </style>
+

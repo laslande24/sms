@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>
@@ -11,8 +11,7 @@ import { RouterLink } from 'vue-router'
             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
             alt="login form"
             class="img-fluid"
-            style="height: 100%; position: fixed"
-          />
+            style="height: 100%; position: fixed" />
         </div>
         <div class="col-md-6 col-lg-7">
           <div class="px-4 px-lg-3 text-black align-items-center">
@@ -22,8 +21,7 @@ import { RouterLink } from 'vue-router'
                   src="@/assets/images/logo.png"
                   alt=""
                   height="55"
-                  class="d-inline-block align-top"
-                />
+                  class="d-inline-block align-top" />
                 <span class="h1 fw-bold mb-0">Yambaya-mo</span>
               </div>
 
@@ -37,8 +35,7 @@ import { RouterLink } from 'vue-router'
                     id="firstName"
                     type="text"
                     placeholder="Enter your first name"
-                    required
-                  />
+                    required />
                   <label for="floatingInput" class="m-2 mt-0 mb-0"
                     >First Name</label
                   >
@@ -49,8 +46,7 @@ import { RouterLink } from 'vue-router'
                     id="lastName"
                     type="text"
                     placeholder="Enter your last name"
-                    required
-                  />
+                    required />
                   <label for="floatingInput" class="m-2 mt-0 mb-0"
                     >Last Name</label
                   >
@@ -64,8 +60,7 @@ import { RouterLink } from 'vue-router'
                   id="email"
                   type="email"
                   placeholder="name@example.com"
-                  required
-                />
+                  required />
                 <label for="floatingInput">Email</label>
               </div>
 
@@ -76,8 +71,7 @@ import { RouterLink } from 'vue-router'
                   id="password"
                   type="password"
                   placeholder="*******"
-                  required
-                />
+                  required />
                 <label for="floatingInput">Password</label>
               </div>
 
@@ -87,8 +81,7 @@ import { RouterLink } from 'vue-router'
                   class="form-check-input"
                   type="checkbox"
                   name="agree"
-                  id="agree"
-                />
+                  id="agree" />
                 <label class="form-check-label fs-6 fw-lighter" for="agree"
                   >I agree with the <a href="#">Terms & Conditions</a>.</label
                 >
@@ -118,3 +111,4 @@ import { RouterLink } from 'vue-router'
     </CCard>
   </CCol>
 </template>
+

@@ -17,8 +17,7 @@
                 <CButtonGroup
                   class="float-end me-3"
                   role="group"
-                  aria-label="Basic outlined example"
-                >
+                  aria-label="Basic outlined example">
                   <CButton color="secondary" variant="outline">Day</CButton>
                   <CButton color="secondary" variant="outline" active
                     >Month</CButton
@@ -29,8 +28,7 @@
             </CRow>
             <CRow>
               <MainChartExample
-                style="height: 300px; max-height: 300px; margin-top: 40px"
-              />
+                style="height: 300px; max-height: 300px; margin-top: 40px" />
             </CRow>
           </CCardBody>
           <CCardFooter>
@@ -43,8 +41,7 @@
                   color="success"
                   thin
                   :precision="1"
-                  :value="40"
-                />
+                  :value="40" />
               </CCol>
               <CCol class="mb-sm-2 mb-0 d-md-down-none">
                 <div class="text-medium-emphasis">Unique</div>
@@ -54,8 +51,7 @@
                   color="info"
                   thin
                   :precision="1"
-                  :value="20"
-                />
+                  :value="20" />
               </CCol>
               <CCol class="mb-sm-2 mb-0">
                 <div class="text-medium-emphasis">Pageviews</div>
@@ -65,8 +61,7 @@
                   color="warning"
                   thin
                   :precision="1"
-                  :value="60"
-                />
+                  :value="60" />
               </CCol>
               <CCol class="mb-sm-2 mb-0">
                 <div class="text-medium-emphasis">New Users</div>
@@ -76,8 +71,7 @@
                   color="danger"
                   thin
                   :precision="1"
-                  :value="80"
-                />
+                  :value="80" />
               </CCol>
               <CCol class="mb-sm-2 mb-0 d-md-down-none">
                 <div class="text-medium-emphasis">Bounce Rate</div>
@@ -94,15 +88,15 @@
 </template>
 
 <script>
-import avatar1 from '@/assets/images/avatars/1.jpg'
-import avatar2 from '@/assets/images/avatars/2.jpg'
-import avatar3 from '@/assets/images/avatars/3.jpg'
-import avatar4 from '@/assets/images/avatars/4.jpg'
-import avatar5 from '@/assets/images/avatars/5.jpg'
-import avatar6 from '@/assets/images/avatars/6.jpg'
-import MainChartExample from './charts/MainChartExample'
-import WidgetsStatsA from './widgets/WidgetsStatsTypeA.vue'
-import WidgetsStatsD from './widgets/WidgetsStatsTypeD.vue'
+import avatar1 from '@/assets/images/avatars/1.jpg';
+import avatar2 from '@/assets/images/avatars/2.jpg';
+import avatar3 from '@/assets/images/avatars/3.jpg';
+import avatar4 from '@/assets/images/avatars/4.jpg';
+import avatar5 from '@/assets/images/avatars/5.jpg';
+import avatar6 from '@/assets/images/avatars/6.jpg';
+import MainChartExample from './charts/MainChartExample';
+import WidgetsStatsA from './widgets/WidgetsStatsTypeA.vue';
+import WidgetsStatsD from './widgets/WidgetsStatsTypeD.vue';
 
 export default {
   name: 'Dashboard',
@@ -120,11 +114,11 @@ export default {
       { title: 'Friday', value1: 22, value2: 73 },
       { title: 'Saturday', value1: 53, value2: 82 },
       { title: 'Sunday', value1: 9, value2: 69 },
-    ]
+    ];
     const progressGroupExample2 = [
       { title: 'Male', icon: 'cil-user', value: 53 },
       { title: 'Female', icon: 'cil-user-female', value: 43 },
-    ]
+    ];
     const progressGroupExample3 = [
       {
         title: 'Organic Search',
@@ -135,7 +129,7 @@ export default {
       { title: 'Facebook', icon: 'cib-facebook', percent: 15, value: '51,223' },
       { title: 'Twitter', icon: 'cib-twitter', percent: 11, value: '37,564' },
       { title: 'LinkedIn', icon: 'cib-linkedin', percent: 8, value: '27,319' },
-    ]
+    ];
     const tableExample = [
       {
         avatar: { src: avatar1, status: 'success' },
@@ -225,14 +219,15 @@ export default {
         payment: { name: 'Amex', icon: 'cib-cc-amex' },
         activity: 'Last week',
       },
-    ]
+    ];
 
     return {
       tableExample,
       progressGroupExample1,
       progressGroupExample2,
       progressGroupExample3,
-    }
+    };
   },
-}
+};
 </script>
+

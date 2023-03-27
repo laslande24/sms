@@ -73,8 +73,7 @@
       :sm="{ cols: 2 }"
       :md="{ cols: 3 }"
       :lg="{ cols: 4 }"
-      :xl="{ cols: 5 }"
-    >
+      :xl="{ cols: 5 }">
       <CCol xs>
         <CCard class="h-100">
           <CCardImage orientation="top" :src="Computer" class="h-100" />
@@ -158,12 +157,12 @@
 </template>
 
 <script>
-import Geo from '@/assets/images/geography.jpg'
-import Phys from '@/assets/images/physics.jpg'
-import Bio from '@/assets/images/biology.jpg'
-import Chem from '@/assets/images/chemistry.jpg'
-import Computer from '@/assets/images/computer_science.jpg'
-import Calcul from '@/assets/images/math.jpg'
+import Geo from '@/assets/images/geography.jpg';
+import Phys from '@/assets/images/physics.jpg';
+import Bio from '@/assets/images/biology.jpg';
+import Chem from '@/assets/images/chemistry.jpg';
+import Computer from '@/assets/images/computer_science.jpg';
+import Calcul from '@/assets/images/math.jpg';
 export default {
   name: 'Progress',
   setup() {
@@ -174,7 +173,8 @@ export default {
       Bio,
       Chem,
       Computer,
-    }
+    };
   },
-}
+};
 </script>
+

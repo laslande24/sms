@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -15,5 +16,4 @@ app.use(CoreuiVue)
 app.provide('icons', icons)
 app.component('CIcon', CIcon)
 app.component('DocsExample', DocsExample)
-
 app.mount('#app')

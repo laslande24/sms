@@ -6,8 +6,7 @@
           <li
             class="nav-item"
             v-for="(question, key) in exam.question"
-            :key="key"
-          >
+            :key="key">
             <a class="nav-link" :href="'#question1' + key + 1"
               >Q{{ key + 1 }}</a
             >
@@ -24,8 +23,7 @@
           style="color: #3b5998"
           class="me-2"
           icon="cil-history"
-          size="lg"
-        />2H30{{ exam.duration }}
+          size="lg" />2H30{{ exam.duration }}
       </p>
     </div>
     <ExamQuestion
@@ -33,8 +31,7 @@
       :key="count"
       @end="getAnswer"
       :count="count"
-      :question="current"
-    ></ExamQuestion>
+      :question="current"></ExamQuestion>
 
     <div v-else class="mt-5">
       <h2 class="text-center">Exam Ended!</h2>
@@ -46,39 +43,39 @@
 </template>
 
 <script>
-import ExamQuestion from '@/components/ExamQuestion.vue'
-import { ref, computed } from 'vue'
-import { getExamQuestion } from '@/composables/Exam'
+import ExamQuestion from '@/components/ExamQuestion.vue';
+import { ref, computed } from 'vue';
+import { getExamQuestion } from '@/composables/Exam';
 
 export default {
   name: 'TakeExam',
   components: { ExamQuestion },
   props: ['id'],
   setup(props) {
-    const { exam, load, error } = getExamQuestion(props.id)
-    const count = ref(0)
-    const answers = ref([])
-    const end_exam = ref(false)
+    const { exam, load, error } = getExamQuestion(props.id);
+    const count = ref(0);
+    const answers = ref([]);
+    const end_exam = ref(false);
 
-    load()
+    load();
     const current = computed(() => {
       if (exam.value != null) {
-        return exam.value.question[count.value]
+        return exam.value.question[count.value];
       }
-      return {}
-    })
+      return {};
+    });
 
     const getAnswer = (value) => {
       answers.value.push({
         id: current.value.id,
         answer: value.value,
-      })
+      });
       if (count.value < exam.value.question.length - 1) {
-        count.value = count.value + 1
+        count.value = count.value + 1;
       } else {
-        end_exam.value = true
+        end_exam.value = true;
       }
-    }
+    };
 
     return {
       exam,
@@ -87,9 +84,9 @@ export default {
       end_exam,
       count,
       current,
-    }
+    };
   },
-}
+};
 </script>
 
 <style scoped></style>

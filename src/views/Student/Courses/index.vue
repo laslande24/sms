@@ -3,8 +3,7 @@
     <div
       v-for="(course, index) in courses"
       :key="index"
-      class="row col-sm-9 col-md-6 col-lg-4 mb-4 px-4"
-    >
+      class="row col-sm-9 col-md-6 col-lg-4 mb-4 px-4">
       <CCard class="shadow-sm p-0">
         <CCardHeader class="p-0">
           <div class="img-div">
@@ -14,35 +13,29 @@
         <CCardBody class="pb-0 pt-1">
           <div>
             <router-link
-              :to="{ name: 'Course Details', params: { id: course.id } }"
-            >
+              :to="{ name: 'Course Details', params: { id: course.id } }">
               <b style="color: #3c4b64">{{ course.name }}</b> by Jules Akono
             </router-link>
           </div>
           <div class="py-2 pt-3 d-flex justify-content-between">
             <router-link
-              :to="{ name: 'Course Meet', params: { id: course.id } }"
-            >
+              :to="{ name: 'Course Meet', params: { id: course.id } }">
               <CIcon
                 style="color: #3b5998"
                 class="mx-2"
                 icon="cil-video"
-                size="lg"
-              />
+                size="lg" />
             </router-link>
             <router-link
-              :to="{ name: 'Course Details', params: { id: course.id } }"
-            >
+              :to="{ name: 'Course Details', params: { id: course.id } }">
               <CIcon
                 style="color: gold"
                 class="mx-2"
                 icon="cil-folderOpen"
-                size="lg"
-              />
+                size="lg" />
             </router-link>
             <router-link
-              :to="{ name: 'Course Chats', params: { id: course.id } }"
-            >
+              :to="{ name: 'Course Chats', params: { id: course.id } }">
               <CIcon class="mx-2" icon="cil-chat-bubble" size="lg" />
             </router-link>
           </div>
@@ -61,38 +54,38 @@
 </template>
 
 <script>
-import { base_link } from '@/composables/config'
-import { ref } from 'vue'
-import Computer from '@/assets/images/computer_science.jpg'
-import { getCourses } from '@/composables/Course'
+import { base_link } from '@/composables/config';
+import { ref } from 'vue';
+import Computer from '@/assets/images/computer_science.jpg';
+import { getCourses } from '@/composables/Course';
 
 export default {
   data() {},
 
   setup() {
-    const item_selected = ref([])
-    const all = ref(true)
-    const { courses, load } = getCourses()
+    const item_selected = ref([]);
+    const all = ref(true);
+    const { courses, load } = getCourses();
 
-    load()
+    load();
 
     return {
       item_selected,
       all,
       courses,
       Computer,
-    }
+    };
   },
 
   methods: {
     base_link() {
-      return base_link
+      return base_link;
     },
     downloadPdf(link) {
-      window.open(link, '_blank')
+      window.open(link, '_blank');
     },
   },
-}
+};
 </script>
 
 <style>

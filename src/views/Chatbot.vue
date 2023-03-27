@@ -19,8 +19,7 @@
                   href="#"
                   data-placement="right"
                   title=""
-                  data-original-title="June Lane"
-                >
+                  data-original-title="June Lane">
                   <img src="./../../src/assets/images/bot.png" alt="..." />
                   <i></i>
                 </a>
@@ -41,12 +40,10 @@
                   data-toggle="tooltip"
                   href="#"
                   data-placement="left"
-                  data-original-title="Edward Fletcher"
-                >
+                  data-original-title="Edward Fletcher">
                   <img
                     src="./../../src/assets/images/avatars/4.jpg"
-                    alt="bot"
-                  />
+                    alt="bot" />
                   <i></i>
                 </a>
               </div>
@@ -62,15 +59,13 @@
         <div class="panel-footer" style="width: 100%">
           <div
             class="input-group"
-            style="display: flex; flex-direction: row; gap: 10px"
-          >
+            style="display: flex; flex-direction: row; gap: 10px">
             <input
               type="text"
               class="form-control"
               placeholder="Ask me anything"
               v-model="userMessage"
-              @keyup.enter="sendMessage"
-            />
+              @keyup.enter="sendMessage" />
             <div class="chat-ui">
               <button class="btn btn-primary" @click="sendMessage">Send</button>
             </div>
@@ -83,23 +78,23 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
-const apiKey = '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'
+const apiKey = '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';
 
-const apiUrl = 'https://api.openai.com/v1/completions'
+const apiUrl = 'https://api.openai.com/v1/completions';
 
 export default {
   data() {
     return {
       messages: [],
       userMessage: '',
-    }
+    };
   },
   methods: {
     async sendMessage() {
       if (!this.userMessage) {
-        return
+        return;
       }
 
       // Add the user's message to the chat interface
@@ -107,7 +102,7 @@ export default {
         id: this.messages.length,
         text: this.userMessage,
         isBot: false,
-      })
+      });
 
       // Send the user's message to the OpenAI API
       try {
@@ -125,27 +120,27 @@ export default {
           {
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${apiKey}`,
+              'Authorization': `Bearer ${apiKey}`,
             },
           },
-        )
+        );
 
         // Add the bot's response to the chat interface
-        const botMessage = response.data.choices[0].text.trim()
+        const botMessage = response.data.choices[0].text.trim();
         this.messages.push({
           id: this.messages.length,
           text: botMessage,
           isBot: true,
-        })
+        });
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
 
       // Clear the input field
-      this.userMessage = ''
+      this.userMessage = '';
     },
   },
-}
+};
 </script>
 
 <style scoped>

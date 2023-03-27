@@ -17,8 +17,12 @@
             <CAvatar :src="avatar" size="lg" />
             <div
               class="bg-success rounded-circle position-relative"
-              style="width: 0.8rem; height: 0.8rem; top: 2.2rem; right: 0.8rem"
-            ></div>
+              style="
+                width: 0.8rem;
+                height: 0.8rem;
+                top: 2.2rem;
+                right: 0.8rem;
+              "></div>
           </div>
           <div class="d-flex flex-column flex-grow-1">
             <CCardTitle class="fs-6">Christina Jones</CCardTitle>
@@ -33,8 +37,12 @@
             <CAvatar :src="avatar1" size="lg" />
             <div
               class="bg-danger rounded-circle position-relative"
-              style="width: 0.8rem; height: 0.8rem; top: 2.2rem; right: 0.8rem"
-            ></div>
+              style="
+                width: 0.8rem;
+                height: 0.8rem;
+                top: 2.2rem;
+                right: 0.8rem;
+              "></div>
           </div>
           <div class="d-flex flex-column flex-grow-1">
             <CCardTitle class="fs-6">Sasha Cohen</CCardTitle>
@@ -49,8 +57,12 @@
             <CAvatar :src="avatar2" size="lg" />
             <div
               class="bg-success rounded-circle position-relative"
-              style="width: 0.8rem; height: 0.8rem; top: 2.2rem; right: 0.8rem"
-            ></div>
+              style="
+                width: 0.8rem;
+                height: 0.8rem;
+                top: 2.2rem;
+                right: 0.8rem;
+              "></div>
           </div>
           <div class="d-flex flex-column flex-grow-1">
             <CCardTitle class="fs-6">Teddy Kuate</CCardTitle>
@@ -65,8 +77,12 @@
             <CAvatar :src="avatar3" size="lg" />
             <div
               class="bg-success rounded-circle position-relative"
-              style="width: 0.8rem; height: 0.8rem; top: 2.2rem; right: 0.8rem"
-            ></div>
+              style="
+                width: 0.8rem;
+                height: 0.8rem;
+                top: 2.2rem;
+                right: 0.8rem;
+              "></div>
           </div>
           <div class="d-flex flex-column flex-grow-1">
             <CCardTitle class="fs-6">Jef Dam</CCardTitle>
@@ -96,11 +112,11 @@
 </template>
 
 <script>
-import avatar from '@/assets/images/avatars/4.jpg'
-import avatar1 from '@/assets/images/avatars/3.jpg'
-import avatar2 from '@/assets/images/avatars/6.jpg'
-import avatar3 from '@/assets/images/avatars/10.jpg'
-import { CCardTitle } from '@coreui/vue'
+import avatar from '@/assets/images/avatars/4.jpg';
+import avatar1 from '@/assets/images/avatars/3.jpg';
+import avatar2 from '@/assets/images/avatars/6.jpg';
+import avatar3 from '@/assets/images/avatars/10.jpg';
+import { CCardTitle } from '@coreui/vue';
 export default {
   name: 'ChatGroup',
   setup() {
@@ -109,8 +125,8 @@ export default {
       avatar1: avatar1,
       avatar2: avatar2,
       avatar3: avatar3,
-    }
+    };
   },
   components: { CCardTitle },
-}
+};
 </script>

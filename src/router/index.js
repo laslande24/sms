@@ -131,6 +131,18 @@ const routes = [
           },
         ],
       },
+      {
+        path: '/student/quizz',
+        name: 'My Quizz',
+        redirect: '/student/quizz/index',
+        children: [
+          {
+            path: '/student/quizz/index',
+            name: 'My Quizz',
+            component: () => import('@/views/Student/Quizz/Quiz.vue'),
+          },
+        ],
+      },
     ],
   },
   {
