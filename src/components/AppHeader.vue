@@ -13,21 +13,9 @@
         </CNavItem>
       </CHeaderNav>
       <CHeaderNav>
-        <CNavItem>
-          <CNavLink href="#">
-            <NotificationHeader />
-          </CNavLink>
-        </CNavItem>
-        <CNavItem>
-          <CNavLink href="#">
-            <CIcon class="mx-2" icon="cil-video" size="lg" />
-          </CNavLink>
-        </CNavItem>
-        <CNavItem>
-          <CNavLink href="#">
-            <MessageHeader />
-          </CNavLink>
-        </CNavItem>
+        <NotificationHeader />
+        <CIcon class="mx-2 my-2" icon="cil-video" size="lg" />
+        <MessageHeader />
         <AppHeaderDropdownAccnt />
       </CHeaderNav>
     </CContainer>
