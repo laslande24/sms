@@ -17,31 +17,37 @@ import { base_link, meet_link } from '@/composables/config'
 export default {
   name: 'Meet',
   created() {},
+  props: ['id', 'topic'],
 
-  setup() {
+  setup(props) {
     const store = useStore()
     const client = ref(ZoomMtgEmbedded.createClient())
     const data = ref({
       sdkKey: 'uVMpG4HJFMc3JGAGam5gdTWDs3znxNNkw6Cg',
       number: '',
       passWord: '',
-      leaveUrl: base_link + '/student',
-      role: 0,
-      createMeet: base_link + '/course/meeting/join',
+      leaveUrl: base_link + '/teacher',
+      role: 1,
+      createMeet: base_link + '/course/meeting',
       signatureEndpoint: meet_link,
       userEmail: store.state.user.email,
       userName: store.state.user.username,
       registrantToken: '',
-      topic: 'Physic: Simple harmonic motion',
+      topic: props.topic,
     })
     const error = ref(null)
 
     const getMeeting = () => {
       axios
-        .get(data.value.createMeet)
+        .post(data.value.createMeet, {
+          topic: data.value.topic,
+          email: data.value.userEmail,
+          course_id: props.id,
+        })
         .then((res) => {
           data.value.number = res.data.data['meeting_number']
           data.value.passWord = res.data.data.password
+          console.log(data.value.number)
           getSignature()
         })
         .catch((error) => {

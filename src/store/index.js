@@ -21,7 +21,7 @@ export default createStore({
       state.sidebarVisible = payload.value
     },
     UpdateUser(state, payload) {
-      state.sidebarVisible = payload.value
+      state.user = payload.value
     },
   },
   actions: {},

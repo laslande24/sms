@@ -12,7 +12,7 @@ import { RouterLink } from 'vue-router'
             class="p-4 p-lg-4 text-black align-items-center"
             style="background-color: #ebedeb; border-radius: 1rem 0 0 1rem"
           >
-            <form @submit.prevent="submit">
+            <form @submit.prevent="login">
               <div class="d-flex align-items-center mb-3 pb-1">
                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
 
@@ -75,13 +75,7 @@ import { RouterLink } from 'vue-router'
               </div>
 
               <div class="pt-1 mb-2">
-                <button
-                  type="submit"
-                  @click="submit"
-                  class="btn btn-dark btn-block"
-                >
-                  Login
-                </button>
+                <button class="btn btn-dark btn-block">Login</button>
               </div>
               <p class="mb-2 pb-lg-2" style="color: #393f81">
                 Don't have an account?
@@ -103,81 +97,98 @@ import { RouterLink } from 'vue-router'
             style="border-radius: 0 1rem 1rem 0; height: 100%"
           />
         </div>
+        {{ store.state.user }}
       </div>
+      <router-link
+        :to="{
+          name: 'Teacher Course',
+        }"
+        class="hidden but"
+        >stu</router-link
+      >
     </CCard>
   </CCol>
 </template>
 
 <script>
-import { ref } from 'vue'
 import { logoNegative } from '@/assets/brand/logo-negative'
+import { useRouter, useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default {
   data() {
-    return {}
+    return {
+      store: useStore(),
+      user: [
+        {
+          username: 'Kegne Loic',
+          email: 'student@gmail.com',
+          password: 'word',
+          role: 'student',
+        },
+        {
+          username: 'Martin Collins',
+          email: 'collins@gmail.com',
+          password: 'word',
+          role: 'lecturer',
+        },
+        {
+          username: 'Pollin justin',
+          email: 'pollin@gmail.com',
+          password: 'word',
+          role: 'admin',
+        },
+      ],
+      email: '',
+      password: '',
+      inputError: {
+        user: false,
+        password: false,
+      },
+    }
   },
 
   setup() {
-    const user = [
-      {
-        username: 'Kegne Loic',
-        email: 'kegne@gmail.com',
-        password: 'word',
-        role: 'student',
-      },
-      {
-        username: 'Martin Collins',
-        email: 'collins@gmail.com',
-        password: 'word',
-        role: 'lecturer',
-      },
-      {
-        username: 'Pollin justin',
-        email: 'pollin@gmail.com',
-        password: 'word',
-        role: 'admin',
-      },
-    ]
-    const email = ref('')
-    const error = ref({
-      user: false,
-      password: false,
-    })
-    const password = ref('')
-    const but = ref(null)
-
-    const submit = () => {
-      console.log(email.value, password.value)
-      let logUser = user.value.filter((elt) => {
-        if (elt.email == email.value) {
-          if (elt.password == password.value) {
-            return true
-          }
-          error.value.password = true
-          return false
-        }
-        error.value.user = true
-        return false
-      })
-      if (logUser.count == 1) {
-        if (logUser[0].type == 'admin') {
-          this.push({ name: 'Admin Dashboard' })
-        } else if (logUser[0].type == 'lecturer') {
-          this.push({ name: 'Teacher Dashboard' })
-        } else {
-          this.push({ name: 'My Courses' })
-        }
-      }
-    }
-
+    const router = useRouter()
+    const route = useRoute()
     return {
-      submit,
-      email,
-      password,
-      but,
-      user,
+      router,
+      route,
       logoNegative,
     }
+  },
+  methods: {
+    login() {
+      //const router = useRouter()
+      let logUser = this.user.filter((elt) => {
+        if (elt.email == this.email) {
+          if (elt.password == this.password) {
+            this.store.commit({
+              type: 'UpdateUser',
+              value: elt,
+            })
+            return true
+          }
+          this.inputError.password = true
+          return false
+        }
+        return false
+      })
+      console.log(logUser)
+      document.querySelector('.but').click()
+      // if (logUser.length == 1) {
+      //   if (logUser[0].type == 'admin') {
+      //     router.push('/admin/dashboard')
+      //   } else if (logUser[0].type == 'lecturer') {
+      //     router.push('/teacher/dashboard')
+      //   } else {
+      //     router.push('/student/')
+      //   }
+      // } else {
+      //   console.log('Bad')
+      //   this.inputError.user = true
+      // }
+    },
   },
 }
 </script>

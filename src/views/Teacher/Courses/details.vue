@@ -20,10 +20,7 @@
             >
               <CIcon class="mx-2" icon="cil-chat-bubble" size="lg" />
             </router-link>
-            <router-link
-              class="meet"
-              :to="{ name: 'Course Meet', params: { id: course.id } }"
-            >
+            <a @click="modal">
               <span class=""></span>
               <CIcon
                 style="color: crimson"
@@ -31,7 +28,7 @@
                 icon="cil-video"
                 size="lg"
               />
-            </router-link>
+            </a>
           </div>
         </div>
 
@@ -153,11 +150,52 @@
       {{ error }}
     </div>
   </div>
+  <CModal
+    alignment="center"
+    :visible="visibleVerticallyCenteredDemo"
+    @close="
+      () => {
+        visibleVerticallyCenteredDemo = false
+      }
+    "
+  >
+    <CModalHeader>
+      <CModalTitle>Create a new meeting</CModalTitle>
+    </CModalHeader>
+    <CModalBody>
+      <CForm>
+        <CFormInput
+          v-model="topic"
+          type="text"
+          id="exampleFormControlInput1"
+          placeholder="Lesson"
+        />
+      </CForm>
+      {{ store.state.user }}
+    </CModalBody>
+    <CModalFooter>
+      <CButton
+        color="secondary"
+        @click="
+          () => {
+            visibleVerticallyCenteredDemo = false
+          }
+        "
+      >
+        Close
+      </CButton>
+      <router-link
+        :to="{ name: 'Teacher Meet', params: { id: course.id, topic: topic } }"
+      >
+        <CButton color="primary">Continue</CButton>
+      </router-link>
+    </CModalFooter>
+  </CModal>
 </template>
 
 <script>
 import { getCourse } from '@/composables/Course'
-
+import { useStore } from 'vuex'
 import { ref } from 'vue'
 
 export default {
@@ -165,14 +203,25 @@ export default {
   components: {},
   props: ['id'],
   setup(props) {
+    const store = useStore()
+    const visibleVerticallyCenteredDemo = ref(false)
     const { error, course, load } = getCourse(props.id)
     const msg = ref(null)
     load()
 
+    const modal = () => {
+      visibleVerticallyCenteredDemo.value = true
+    }
+    const topic = ref('Lesson-')
+
     return {
       course,
       error,
+      topic,
+      modal,
       msg,
+      store,
+      visibleVerticallyCenteredDemo,
     }
   },
 }

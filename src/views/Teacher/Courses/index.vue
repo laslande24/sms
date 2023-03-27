@@ -8,13 +8,16 @@
       <CCard class="shadow-sm p-0">
         <CCardHeader class="p-0">
           <div class="img-div">
-            <CCardImage orientation="top" :src="Computer" class="h-100" />
+            <img :src="base_link() + '/static/images/' + course.image" />
           </div>
         </CCardHeader>
         <CCardBody class="pb-0 pt-1">
           <div>
             <router-link
-              :to="{ name: 'Course Details', params: { id: course.id } }"
+              :to="{
+                name: 'Teacher Course Details',
+                params: { id: course.id },
+              }"
             >
               <b style="color: #3c4b64">{{ course.name }}</b> by Jules Akono
             </router-link>
@@ -31,7 +34,10 @@
               />
             </router-link>
             <router-link
-              :to="{ name: 'Course Details', params: { id: course.id } }"
+              :to="{
+                name: 'Teacher Course Details',
+                params: { id: course.id },
+              }"
             >
               <CIcon
                 style="color: gold"
@@ -61,6 +67,7 @@
 </template>
 
 <script>
+import { base_link } from '@/composables/config'
 import { ref } from 'vue'
 import Computer from '@/assets/images/computer_science.jpg'
 import { getCourses } from '@/composables/Course'
@@ -84,6 +91,9 @@ export default {
   },
 
   methods: {
+    base_link() {
+      return base_link
+    },
     downloadPdf(link) {
       window.open(link, '_blank')
     },
@@ -113,6 +123,7 @@ export default {
 
 .img-div img {
   height: 150px;
+  width: 100%;
 }
 
 a {
