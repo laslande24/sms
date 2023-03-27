@@ -100,6 +100,11 @@ const routes = [
         ],
       },
       {
+        path: '/student/my-goals',
+        name: 'Student Goals',
+        component: () => import('@/views/Student/Goals.vue'),
+      },
+      {
         path: '/student/assignment',
         name: 'Student Assignment',
         component: () => import('@/views/Student/Assignment.vue'),
@@ -148,6 +153,26 @@ const routes = [
         path: 'my-classes',
         name: 'Teacher My Classes',
         component: () => import('@/views/Classes.vue'),
+      },
+      {
+        path: 'exams/questions',
+        name: 'Teacher view Questions',
+        component: () => import('@/views/Teacher/Exams/Question/view.vue'),
+      },
+      {
+        path: 'exams/course',
+        name: 'Teacher My Exams',
+        component: () => import('@/views/Teacher/Exams/ViewCourses.vue'),
+      },
+      {
+        path: 'exams/create',
+        name: 'Add Questions',
+        component: () => import('@/views/Teacher/Exams/EditExam.vue'),
+      },
+      {
+        path: 'exams',
+        name: 'Teacher Exam',
+        component: () => import('@/views/Teacher/Exams/index.vue'),
       },
       {
         path: '/teacher/my-courses',

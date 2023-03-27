@@ -30,7 +30,6 @@
                   <p>
                     {{ message.text }}
                   </p>
-                  >
                 </div>
               </div>
             </div>
@@ -53,7 +52,7 @@
               <div class="chat-body">
                 <div class="chat-content">
                   <p>{{ message.text }}</p>
-                  >
+
                 </div>
               </div>
             </div>
