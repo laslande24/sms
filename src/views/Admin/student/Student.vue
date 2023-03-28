@@ -1,0 +1,218 @@
+<template>
+  <CContainer class="position-relative vh-100">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">role</th>
+          <th scope="col">Phone</th>
+          <th scope="row">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Jule</td>
+          <td>Jule</td>
+          <td>jule@gmail.com</td>
+          <td>2</td>
+          <td>659532544</td>
+          <td>
+            <CIcon
+              class="mx-2 hover-effect"
+              icon="cil-list"
+              size="lg"
+              @click="
+                () => {
+                  visibleScrollableDemo = true
+                }
+              "
+            />
+            <CIcon
+              class="mx-2 hover-effect"
+              icon="cil-pencil"
+              size="lg"
+              @click="
+                () => {
+                  visibleScrollableDemo = true
+                }
+              "
+            />
+            <CIcon
+              class="mx-2 hover-effect"
+              icon="cil-trash"
+              size="lg"
+              @click="
+                () => {
+                  visibleVerticallyCenteredDemo = true
+                }
+              "
+            />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jule</td>
+          <td>Jule</td>
+          <td>jule@gmail.com</td>
+          <td>2</td>
+          <td>659532544</td>
+          <td>
+            <CIcon
+              class="mx-2 hover-effect"
+              icon="cil-list"
+              size="lg"
+              @click="
+                () => {
+                  visibleScrollableDemo = true
+                }
+              "
+            />
+            <CIcon
+              class="mx-2 hover-effect"
+              icon="cil-pencil"
+              size="lg"
+              @click="
+                () => {
+                  visibleScrollableDemo = true
+                }
+              "
+            />
+            <CIcon
+              class="mx-2 hover-effect"
+              icon="cil-trash"
+              size="lg"
+              @click="
+                () => {
+                  visibleVerticallyCenteredDemo = true
+                }
+              "
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- pagination -->
+    <CPagination
+      aria-label="Pagination"
+      class="position-absolute bottom-0 end-0"
+    >
+      <CPaginationItem aria-label="Previous" href="#" disabled
+        ><span aria-hidden="true">&laquo;</span></CPaginationItem
+      >
+      <CPaginationItem href="#" active>1</CPaginationItem>
+      <CPaginationItem href="#">2</CPaginationItem>
+      <CPaginationItem href="#">3</CPaginationItem>
+      <CPaginationItem aria-label="Next" href="#"
+        ><span aria-hidden="true">&raquo;</span></CPaginationItem
+      >
+    </CPagination>
+
+    <!-- personnel Modal -->
+    <CModal
+      scrollable
+      :visible="visibleScrollableDemo"
+      @close="
+        () => {
+          visibleScrollableDemo = false
+        }
+      "
+    >
+      <CModalHeader>
+        <CModalTitle>Personnel Information</CModalTitle>
+      </CModalHeader>
+      <CModalBody>
+        <CCol>
+          <CRow class="mb-4 d-flex justify-content-center align-items-center">
+            <CAvatar color="primary" text-color="white" size="xl">JJ</CAvatar>
+          </CRow>
+          <div class="row mb-4">
+            <div class="form-floating col-lg-6">
+              <input
+                class="form-control"
+                id="firstName"
+                type="text"
+                placeholder="Jule"
+                disabled
+              />
+              <label for="floatingInput" class="text-center">Jule</label>
+            </div>
+            <div class="form-floating col-lg-6">
+              <input
+                class="form-control"
+                id="lastName"
+                type="text"
+                placeholder="Jule"
+                disabled
+              />
+              <label for="floatingInput" class="text-center">Jule</label>
+            </div>
+          </div>
+          <input
+            class="form-control mb-4"
+            id="email"
+            type="text"
+            placeholder="jule@gmail.com"
+            disabled
+          />
+          <input class="form-control mb-4" id="date" type="date" disabled />
+          <input class="form-control mb-4" id="phone" type="number" disabled />
+        </CCol>
+      </CModalBody>
+    </CModal>
+
+    <!-- Delete personnel Modal -->
+    <CModal
+      :visible="visibleVerticallyCenteredDemo"
+      @close="
+        () => {
+          visibleVerticallyCenteredDemo = false
+        }
+      "
+    >
+      <CModalHeader>
+        <CModalTitle>Delete Personnel</CModalTitle>
+      </CModalHeader>
+      <CModalBody class="d-flex justify-content-center align-items-center">
+        Do you really want to delete this personnel?
+      </CModalBody>
+      <CModalFooter>
+        <CButton
+          color="secondary"
+          @click="
+            () => {
+              visibleVerticallyCenteredDemo = false
+            }
+          "
+        >
+          No
+        </CButton>
+        <CButton color="primary">Yes</CButton>
+      </CModalFooter>
+    </CModal>
+  </CContainer>
+</template>
+
+<style>
+.hover-effect:hover {
+  opacity: 0.5;
+  color: #0d6efd;
+}
+</style>
+
+<script>
+export default {
+  name: 'Student',
+  components: {},
+  data() {
+    return {
+      visibleScrollableDemo: false,
+      visibleVerticallyCenteredDemo: false,
+    }
+  },
+}
+</script>

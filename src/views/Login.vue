@@ -5,8 +5,8 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <CCol>
-    <CCard>
-      <div class="row g-0 p-5">
+    <CCard class="" style="border: none">
+      <div class="row g-0 p-5 mx-auto">
         <div class="col-md-6 col-lg-6">
           <div
             class="p-4 p-lg-4 text-black align-items-center"

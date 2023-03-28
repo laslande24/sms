@@ -35,6 +35,11 @@ const routes = [
     component: () => import('@/views/Register.vue'),
   },
   {
+    path: '/school',
+    name: 'School',
+    component: () => import('@/views/SchoolForm.vue'),
+  },
+  {
     path: '/take-exam/:id',
     name: 'Take Exam',
     props: true,
@@ -213,7 +218,12 @@ const routes = [
       {
         path: 'students',
         name: 'My Students',
-        component: () => import('@/views/Admin/student/index.vue'),
+        component: () => import('@/views/Admin/student/Student.vue'),
+      },
+      {
+        path: 'personnel',
+        name: 'Personnel',
+        component: () => import('@/views/Admin/Employee.vue'),
       },
       // {
       //   path: '/my-classes',

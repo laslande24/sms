@@ -3,14 +3,19 @@
     <AppSidebar :type="'student'" />
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
       <AppHeader />
-      <div class="body flex-grow-1 px-3">
-        <CContainer lg style="padding: 0 20px; margin: 0">
+      <div class="body flex-grow-1 px-1">
+        <CContainer lg style="padding: 0 5px; margin: 0">
           <router-view />
         </CContainer>
       </div>
     </div>
   </div>
 </template>
+<style>
+a {
+  text-decoration: none;
+}
+</style>
 <script>
 import { CContainer } from '@coreui/vue'
 //import AppFooter from '@/components/AppFooter.vue'

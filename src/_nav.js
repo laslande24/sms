@@ -189,7 +189,7 @@ const navAdmin = [
   {
     component: 'CNavItem',
     name: 'Student',
-    to: '/admin/student',
+    to: '/admin/students',
     icon: 'cil-education',
   },
   {
@@ -212,9 +212,9 @@ const navAdmin = [
   },
   {
     component: 'CNavItem',
-    name: 'Chat',
-    to: 'Chat',
-    icon: 'cil-speech',
+    name: 'School Setting',
+    to: 'School Setting',
+    icon: 'cil-settings',
   },
   {
     component: 'CNavTitle',
