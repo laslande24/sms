@@ -223,18 +223,18 @@ const routes = [
       {
         path: 'students',
         name: 'My Students',
-        component: () => import('@/views/Admin/student/Student.vue'),
+        component: () => import('@/views/Student.vue'),
       },
       {
         path: 'personnel',
         name: 'Personnel',
-        component: () => import('@/views/Admin/Employee.vue'),
+        component: () => import('@/views/Employee.vue'),
       },
-      // {
-      //   path: '/my-classes',
-      //   name: 'My Classes',
-      //   component: () => import('@/views/Classes.vue'),
-      // },
+      {
+        path: '/my-classes',
+        name: 'My Classes',
+        component: () => import('@/views/Classes.vue'),
+      },
       // {
       //   path: '/personnel',
       //   name: 'Personnel',

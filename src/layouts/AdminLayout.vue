@@ -3,16 +3,15 @@
     <AppSidebar :type="'admin'" />
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
       <AppHeader />
-      <div class="body flex-grow-1 px-3">
-        <CContainer lg style="padding: 0 20px; margin: 0">
+      <div class="body flex-grow-1 px-1 px-lg-3">
+        <div class="py-lg-4 m-0">
           <router-view />
-        </CContainer>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { CContainer } from '@coreui/vue'
 //import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppSidebar from '@/components/AppSidebar.vue'
@@ -23,7 +22,6 @@ export default {
     //AppFooter,
     AppHeader,
     AppSidebar,
-    CContainer,
   },
 }
 </script>

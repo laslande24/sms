@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="timer">
+  <div class="timer" role="status">
     <span>{{ duration }}</span>
   </div>
 </template>
@@ -57,13 +57,13 @@ export default {
 
     const timer = setInterval(() => {
       duration.value = duration.value - 1
-      if (duration.value == 0) {
+      if (duration.value == -1) {
         clearInterval(timer)
         emit('end', answer)
       }
 
       if (duration.value < 7) {
-        document.querySelector('.timer').style.backgroundColor = 'red'
+        document.querySelector('.timer').classList.add('pulse')
       }
     }, 1000)
     return {
@@ -95,5 +95,26 @@ export default {
   border-radius: 100%;
   top: 10px;
   right: 20px;
+}
+
+.pulse {
+  background-color: red;
+  border-radius: 50%;
+  animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    box-shadow: 0 0 0 0 rgb(255, 109, 74, 0.7), 0 0 0 0 rgb(255, 109, 74, 0.7);
+  }
+  40% {
+    box-shadow: 0 0 0 50px rgb(255, 109, 74, 0), 0 0 0 0 rgb(255, 109, 74, 0.7);
+  }
+  80% {
+    box-shadow: 0 0 0 50px rgb(255, 109, 74, 0), 0 0 0 30px rgb(255, 109, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(255, 109, 74, 0), 0 0 0 30px rgb(255, 109, 74, 0);
+  }
 }
 </style>
