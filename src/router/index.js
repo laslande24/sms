@@ -49,7 +49,7 @@ const routes = [
       {
         path: '/student/dashboard',
         name: 'Student Dashboard',
-        component: () => import('@/views/Dashboard.vue'),
+        component: () => import('@/views/Student/Dashboard.vue'),
       },
       {
         path: '/student/my-courses',
@@ -110,6 +110,11 @@ const routes = [
         component: () => import('@/views/Student/Translation.vue'),
       },
       {
+        path: '/student/goals',
+        name: 'Student Goals',
+        component: () => import('@/views/Student/Goal.vue'),
+      },
+      {
         path: '/student/weaknesses',
         name: 'Student Weakness',
         component: () => import('@/views/Student/Weakness.vue'),
@@ -163,6 +168,11 @@ const routes = [
         path: 'my-classes',
         name: 'Teacher My Classes',
         component: () => import('@/views/Classes.vue'),
+      },
+      {
+        path: 'exams',
+        name: 'Teacher Exams',
+        component: () => import('@/views/Teacher/Exams/index.vue'),
       },
       {
         path: '/teacher/my-courses',

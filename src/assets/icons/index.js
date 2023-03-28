@@ -57,6 +57,7 @@ import {
   cilGrid,
   cilFile,
   cilJustifyCenter,
+  cilAlignLeft,
   cilLaptop,
   cilLayers,
   cilLightbulb,
@@ -107,6 +108,7 @@ export const iconsSet = Object.assign(
   {},
   {
     cilArrowBottom,
+    cilAlignLeft,
     cilArrowRight,
     cilArrowTop,
     cilBan,

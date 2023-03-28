@@ -114,7 +114,7 @@ const navTeacher = [
   {
     component: 'CNavItem',
     name: 'Dashboard',
-    to: '/dashboard',
+    to: '/teacher/dashboard',
     icon: 'cil-speedometer',
     // badge: {
     //   color: 'primary',
@@ -124,25 +124,25 @@ const navTeacher = [
   {
     component: 'CNavItem',
     name: 'My Classes',
-    to: 'my-classes',
+    to: '/teacher/my-classes',
     icon: 'cil-school',
   },
   {
     component: 'CNavItem',
     name: 'My Courses',
-    to: 'my-courses',
+    to: '/teacher/my-courses',
     icon: 'cil-book',
   },
   {
     component: 'CNavItem',
     name: 'Exams',
-    to: 'Chat',
-    icon: 'cil-speech',
+    to: '/teacher/exams',
+    icon: 'cil-align-left',
   },
   {
     component: 'CNavItem',
     name: 'Chat',
-    to: 'Chat',
+    to: '/Chat',
     icon: 'cil-speech',
   },
   {
