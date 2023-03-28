@@ -4,10 +4,38 @@
       <!-- Panel Chat -->
       <div class="panel" id="chat">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            <i class="icon wb-chat-text" aria-hidden="true"></i> Tell me your
-            doubt
-          </h3>
+          <CContainer class="px-3 mb-3">
+            <CRow>
+              <CCol :md="5">
+                <CFormSelect size="md" @change="onChange($event)">
+                  <option value="0">Select Language</option>
+                  <option value="Ewondo">Ewondo</option>
+                  <option value="Yemba">Yemba</option>
+                </CFormSelect>
+              </CCol>
+              <CCol
+                :md="2"
+                class="d-flex justify-content-center align-items-center"
+              >
+                <CIcon icon="cil-arrow-thick-right" class="d-none d-md-block" />
+                <CIcon
+                  icon="cil-arrow-thick-bottom"
+                  class="d-block d-md-none my-2"
+                />
+              </CCol>
+              <CCol :md="5">
+                <CFormSelect
+                  size="md"
+                  aria-label="Disabled select example"
+                  disabled
+                >
+                  <option>Select Language</option>
+                  <option selected value="1">English</option>
+                  <option value="2">French</option>
+                </CFormSelect>
+              </CCol>
+            </CRow>
+          </CContainer>
         </div>
         <div class="panel-body">
           <div class="chats" v-for="message in messages" :key="message.id">
@@ -30,7 +58,6 @@
                   <p>
                     {{ message.text }}
                   </p>
-                  >
                 </div>
               </div>
             </div>
@@ -50,7 +77,6 @@
               <div class="chat-body">
                 <div class="chat-content">
                   <p>{{ message.text }}</p>
-                  >
                 </div>
               </div>
             </div>
@@ -61,13 +87,12 @@
             class="input-group"
             style="display: flex; flex-direction: row; gap: 10px"
           >
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Tell me anything"
+            <CFormTextarea
+              rows="3"
+              placeholder="Enter text"
               v-model="userMessage"
               @keyup.enter="sendMessage"
-            />
+            ></CFormTextarea>
             <div class="chat-ui">
               <button class="btn btn-primary" @click="sendMessage">Send</button>
             </div>
@@ -91,6 +116,7 @@ export default {
     return {
       messages: [],
       userMessage: '',
+      localLanguage: '...',
     }
   },
   methods: {
@@ -139,6 +165,14 @@ export default {
 
       // Clear the input field
       this.userMessage = ''
+    },
+    onChange(event) {
+      if (event.target.value == 0) {
+        this.localLanguage = '...'
+      } else {
+        this.localLanguage = event.target.value
+      }
+      console.log(event.target.value)
     },
   },
 }

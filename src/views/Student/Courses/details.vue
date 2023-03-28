@@ -143,12 +143,12 @@
           </CCol>
           <CCol class="py-2 col-sm-6 col-md-4">
             <CWidgetStatsF
-              color="warning"
-              title="Ewondo to English"
+              color="success"
+              title="Local Languages"
               :value="course.students.length"
             >
               <template #icon>
-                <CIcon icon="cil-settings" size="xl" />
+                <CIcon icon="cil-eco" size="xl" />
               </template>
               <template #footer>
                 <router-link
