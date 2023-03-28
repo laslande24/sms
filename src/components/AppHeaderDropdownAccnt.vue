@@ -1,5 +1,5 @@
 <template>
-  <CDropdown variant="nav-item">
+  <CDropdown>
     <CDropdownToggle placement="bottom-end" class="py-0" :caret="false">
       <CAvatar :src="avatar" size="md" />
     </CDropdownToggle>
@@ -22,9 +22,13 @@
       <CDropdownHeader component="h6" class="bg-light fw-semibold py-2">
         Settings
       </CDropdownHeader>
-      <CDropdownItem> <CIcon icon="cil-user" /> Profile </CDropdownItem>
-      <CDropdownItem> <CIcon icon="cil-settings" /> Settings </CDropdownItem>
-      <CDropdownItem>
+      <CDropdownItem href="#/dashboard/account">
+        <CIcon icon="cil-user" /> Profile
+      </CDropdownItem>
+      <CDropdownItem href="#/dashboard/settings">
+        <CIcon icon="cil-settings" /> Settings
+      </CDropdownItem>
+      <CDropdownItem href="#/dashboard/assignment">
         <CIcon icon="cil-book" /> Assignments
         <CBadge color="secondary" class="ms-auto">{{ itemsCount }}</CBadge>
       </CDropdownItem>

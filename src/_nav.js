@@ -222,6 +222,12 @@ const navAdmin = [
   },
   {
     component: 'CNavItem',
+    name: 'Account',
+    to: '/dashboard/account',
+    icon: 'cil-user',
+  },
+  {
+    component: 'CNavItem',
     name: 'Settings',
     to: 'Settings',
     icon: 'cil-settings',
