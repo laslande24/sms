@@ -235,11 +235,11 @@ const routes = [
         name: 'Admin Dashboard',
         component: () => import('@/views/Classes.vue'),
       },
-      // {
-      //   path: '/my-classes',
-      //   name: 'My Classes',
-      //   component: () => import('@/views/Classes.vue'),
-      // },
+      {
+        path: 'classes',
+        name: 'Admin Classes',
+        component: () => import('@/views/Admin/Classes/index.vue'),
+      },
       // {
       //   path: '/personnel',
       //   name: 'Personnel',

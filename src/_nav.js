@@ -142,7 +142,7 @@ const navTeacher = [
   {
     component: 'CNavItem',
     name: 'Chat',
-    to: '/Chat',
+    to: '/teacher/chat',
     icon: 'cil-speech',
   },
   {
@@ -183,8 +183,8 @@ const navAdmin = [
   {
     component: 'CNavItem',
     name: 'Classes',
-    to: '/admin/class',
-    icon: 'cil-libraryBuilding',
+    to: '/admin/classes',
+    icon: 'cil-library-building',
   },
   {
     component: 'CNavItem',
