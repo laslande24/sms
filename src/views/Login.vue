@@ -1,8 +1,3 @@
-<script setup>
-import { RouterLink } from 'vue-router'
-//login vue
-</script>
-
 <template>
   <CCol>
     <CCard class="" style="border: none">
@@ -12,7 +7,7 @@ import { RouterLink } from 'vue-router'
             class="p-4 p-lg-4 text-black align-items-center"
             style="background-color: #ebedeb; border-radius: 1rem 0 0 1rem"
           >
-            <form @submit.prevent="login">
+            <div>
               <div class="d-flex align-items-center mb-3 pb-1">
                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219"></i>
 
@@ -31,9 +26,8 @@ import { RouterLink } from 'vue-router'
 
               <div class="form-floating mb-4">
                 <input
-                  v-model="email"
+                  v-model="username"
                   class="form-control"
-                  id="email"
                   type="email"
                   placeholder="Enter your last name"
                   required
@@ -45,7 +39,6 @@ import { RouterLink } from 'vue-router'
                 <input
                   class="form-control"
                   v-model="password"
-                  id="password"
                   type="password"
                   placeholder="Enter your last name"
                   required
@@ -75,7 +68,9 @@ import { RouterLink } from 'vue-router'
               </div>
 
               <div class="pt-1 mb-2">
-                <button class="btn btn-dark btn-block">Login</button>
+                <button @click="loginUser" class="btn btn-dark btn-block">
+                  Login
+                </button>
               </div>
               <p class="mb-2 pb-lg-2" style="color: #393f81">
                 Don't have an account?
@@ -86,7 +81,7 @@ import { RouterLink } from 'vue-router'
               </p>
               <a href="#!" class="small text-muted">Terms of use.</a>
               <a href="#!" class="small text-muted">Privacy policy</a>
-            </form>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-6 d-none d-md-block">
@@ -97,98 +92,47 @@ import { RouterLink } from 'vue-router'
             style="border-radius: 0 1rem 1rem 0; height: 100%"
           />
         </div>
-        {{ store.state.user }}
       </div>
-      <router-link
-        :to="{
-          name: 'Teacher Course',
-        }"
-        class="hidden but"
-        >stu</router-link
-      >
     </CCard>
   </CCol>
 </template>
 
 <script>
 import { logoNegative } from '@/assets/brand/logo-negative'
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { ref, watch } from 'vue'
+import { login } from '@/composables/School'
 
 export default {
   data() {
-    return {
-      store: useStore(),
-      user: [
-        {
-          username: 'Kegne Loic',
-          email: 'student@gmail.com',
-          password: 'word',
-          role: 'student',
-        },
-        {
-          username: 'Martin Collins',
-          email: 'collins@gmail.com',
-          password: 'word',
-          role: 'lecturer',
-        },
-        {
-          username: 'Pollin justin',
-          email: 'pollin@gmail.com',
-          password: 'word',
-          role: 'admin',
-        },
-      ],
-      email: '',
-      password: '',
-      inputError: {
-        user: false,
-        password: false,
-      },
-    }
+    return {}
   },
 
   setup() {
     const router = useRouter()
-    const route = useRoute()
+
+    const username = ref('')
+    const password = ref('')
+    const { message, load, error } = login()
+
+    watch(message, () => {
+      localStorage.setItem('token', message)
+      router.push({ name: 'All Course' })
+    })
+
+    const loginUser = () => {
+      console.log('Good')
+      load({ username: username.value, password: password.value })
+      router.push({ name: 'LandingPage' })
+    }
     return {
       router,
-      route,
+      password,
+      username,
+      error,
+      loginUser,
       logoNegative,
     }
-  },
-  methods: {
-    login() {
-      //const router = useRouter()
-      let logUser = this.user.filter((elt) => {
-        if (elt.email == this.email) {
-          if (elt.password == this.password) {
-            this.store.commit({
-              type: 'UpdateUser',
-              value: elt,
-            })
-            return true
-          }
-          this.inputError.password = true
-          return false
-        }
-        return false
-      })
-      console.log(logUser)
-      document.querySelector('.but').click()
-      // if (logUser.length == 1) {
-      //   if (logUser[0].type == 'admin') {
-      //     router.push('/admin/dashboard')
-      //   } else if (logUser[0].type == 'lecturer') {
-      //     router.push('/teacher/dashboard')
-      //   } else {
-      //     router.push('/student/')
-      //   }
-      // } else {
-      //   console.log('Bad')
-      //   this.inputError.user = true
-      // }
-    },
   },
 }
 </script>

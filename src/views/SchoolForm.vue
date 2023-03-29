@@ -217,7 +217,7 @@
                   Add Options
                 </button>
               </div>
-              <div class="d-flex">
+              <div class="d-flex flex-wrap">
                 <div
                   style="border: 1px solid lightgray"
                   class="m-1 p-1"
@@ -328,7 +328,7 @@
             Back
           </button>
           <button
-            @click="CreateSchool"
+            @click="RegisterSchool"
             class="btn btn-primary btn-lg btn-block"
             type="button"
           >
@@ -402,10 +402,24 @@
       </div>
     </CModalFooter>
   </CModal>
+  <CToaster placement="top-end" visible>
+    <CToast class="bg-danger" v-if="error != null">
+      <CToastHeader closeButton>
+        <span class="me-auto fw-bold">ERROR</span>
+      </CToastHeader>
+      <CToastBody>
+        <div class="" v-for="(elt, key) in error" :key="key">
+          <p>{{ key }}</p>
+          <p class="ms-3" v-for="(val, i) in elt" :key="i">{{ val }}</p>
+        </div>
+      </CToastBody>
+    </CToast>
+  </CToaster>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { addschool } from '@/composables/School'
 export default {
   name: 'SchoolForm',
 
@@ -429,7 +443,7 @@ export default {
     const optionVal = ref('')
     const selectSystem = ref('')
     const selectList = ref([])
-
+    const { message, error, load } = addschool()
     const baseSetting = ref({
       ENGLISH: {
         'Technical and Vocational Education': {
@@ -878,13 +892,16 @@ export default {
         },
       },
     })
-
+    watch(message, () => {
+      console.log(message)
+    })
     const goSetting = () => {
       document.querySelector('.creat').classList.add('d-none')
       document.querySelector('.config').classList.remove('d-none')
     }
     const goCreat = () => {
       document.querySelector('.config').classList.add('d-none')
+
       document.querySelector('.creat').classList.remove('d-none')
     }
     const addItems = () => {
@@ -930,12 +947,11 @@ export default {
             return false
           }
         })[0]
-        console.log('Department', department)
         department.options = selectList.value
-        console.log(userSetting.value)
       }
       visibleScrollableDemo.value = false
       selectList.value = []
+      console.log(userSetting.value)
     }
     const selectItem = (item) => {
       if (selectList.value.includes(item)) {
@@ -943,6 +959,23 @@ export default {
       } else {
         selectList.value.push(item)
       }
+    }
+    const RegisterSchool = () => {
+      let list = []
+      if (userSetting.value['FRENCH'] != null) {
+        list.push({
+          name: 'FRENCH',
+          schooltype: userSetting.value['FRENCH'],
+        })
+      }
+      if (userSetting.value['ENGLISH'] != null) {
+        list.push({
+          name: 'ENGLISH',
+          schooltype: userSetting.value['ENGLISH'],
+        })
+      }
+      school.value.settings = list
+      load(school.value)
     }
     return {
       goSetting,
@@ -956,6 +989,8 @@ export default {
       userSetting,
       optionVal,
       selectList,
+      error,
+      RegisterSchool,
       visibleScrollableDemo,
     }
   },

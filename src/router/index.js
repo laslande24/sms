@@ -5,6 +5,27 @@ import DefaultLayout from '@/layouts/DefaultLayout'
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import TeacherLayout from '@/layouts/TeacherLayout.vue'
 import GuestLayout from '@/layouts/GuestLayout'
+import jwtDecode from 'jwt-decode'
+function isAuthenticated() {
+  const token = localStorage.getItem('auth_token')
+  if (token) {
+    // Decode the token and check if it is still valid
+    // You can use a library like jwt-decode to decode JWT tokens
+    const decodedToken = jwtDecode(token)
+    const currentTime = Date.now() / 1000 // convert milliseconds to seconds
+    if (decodedToken.exp > currentTime) {
+      // Token is still valid
+      return true
+    } else {
+      // Token has expired
+      localStorage.removeItem('auth_token')
+      return false
+    }
+  } else {
+    // No token found
+    return false
+  }
+}
 const routes = [
   {
     path: '/',
@@ -128,6 +149,13 @@ const routes = [
         path: 'settings',
         name: 'Settings',
         component: () => import('@/views/Settings.vue'),
+        beforeEnter: (to, from, next) => {
+          if (isAuthenticated()) {
+            next()
+          } else {
+            next({ name: 'LandingPage' })
+          }
+        },
       },
       {
         path: '/student/my-exam',

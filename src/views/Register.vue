@@ -173,6 +173,9 @@ import { RouterLink } from 'vue-router'
 <script>
 export default {
   name: 'Register',
+  setup() {
+    return {}
+  },
 }
 </script>
 
