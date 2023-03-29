@@ -167,7 +167,7 @@ const navAdmin = [
   {
     component: 'CNavItem',
     name: 'Admin Dashboard',
-    to: '/dashboard',
+    to: '/admin/dashboard',
     icon: 'cil-speedometer',
     // badge: {
     //   color: 'primary',
@@ -201,14 +201,8 @@ const navAdmin = [
   {
     component: 'CNavItem',
     name: 'Exam',
-    to: 'Assignment',
+    to: 'student/exam',
     icon: 'cil-layers',
-  },
-  {
-    component: 'CNavItem',
-    name: 'Student',
-    to: '/admin/students',
-    icon: 'cil-education',
   },
   {
     component: 'CNavItem',

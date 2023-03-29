@@ -66,26 +66,29 @@ const deleteStudent = () => {
 
   return { msg, deleteError, loadDelete }
 }
-const uploadStudent = (file) => {
-  const chapters = ref(null)
-  const error = ref(null)
-  const load = async () => {
+const uploadStudent = () => {
+  const msgFile = ref(null)
+  const errorFile = ref(null)
+  const upload = async (id) => {
     try {
-      let data = await axios.get(base_link + '/course/' + file + '/chapter')
+      let data = await axios.post(base_link + '/student/upload', id, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
       let res = await data
       if (!res.data.success) {
         console.log('course', res.data.error)
         throw res.data.error
       }
-      chapters.value = res.data.data
-      console.log(chapters.value)
+      msgFile.value = res.data.data
     } catch (e) {
-      error.value = e
-      console.log('error', error.value)
+      errorFile.value = e
+      console.log('error', errorFile.value)
     }
   }
 
-  return { chapters, error, load }
+  return { msgFile, errorFile, upload }
 }
 
 export { getStudent, uploadStudent, addStudent, deleteStudent }

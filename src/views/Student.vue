@@ -536,10 +536,15 @@
         <CModalTitle>Upload CSV</CModalTitle>
       </CModalHeader>
       <CModalBody class="d-flex justify-content-center align-items-center">
-        <input type="file" @change="handleImage" class="form-control" />
+        <input
+          type="file"
+          :ref="file"
+          @change="handleFile"
+          class="form-control"
+        />
       </CModalBody>
       <CModalFooter>
-        <CButton @click="uploadFile" color="primary">Yes</CButton>
+        <CButton @click="uploadFile" color="primary">Upload</CButton>
       </CModalFooter>
     </CModal>
   </div>
@@ -578,6 +583,14 @@
         {{ message }}
       </CToastBody>
     </CToast>
+    <CToast class="bg-success" v-if="msgFile != null">
+      <CToastHeader closeButton>
+        <span class="me-auto fw-bold">SUCCESS</span>
+      </CToastHeader>
+      <CToastBody>
+        {{ msgFile }}
+      </CToastBody>
+    </CToast>
   </CToaster>
 </template>
 
@@ -589,7 +602,12 @@
 </style>
 
 <script>
-import { addStudent, deleteStudent, getStudent } from '@/composables/Student'
+import {
+  addStudent,
+  deleteStudent,
+  getStudent,
+  uploadStudent,
+} from '@/composables/Student'
 import { computed, ref, watch } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
@@ -609,7 +627,7 @@ export default {
       klass: 'form 1',
       phone: ' ',
       school: 'GBHS',
-      sex: 'male',
+      sex: 'Male',
       dob: null,
       password: '12345678',
     })
@@ -628,26 +646,17 @@ export default {
     const { students, load, error } = getStudent()
     const { message, saveError, save } = addStudent()
     const { msg, deleteError, loadDelete } = deleteStudent()
+    const { msgFile, errorFile, upload } = uploadStudent()
     const v$ = useVuelidate(rules, newStudent.value)
     const file = ref(null)
     const uploadFile = () => {
-      console.log(file.value)
+      let formData = new FormData()
+      formData.append('file', file.value)
+      upload(formData)
     }
-    const createBase64Image = (fileObject) => {
-      const reader = new FileReader()
-
-      reader.onload = (e) => {
-        file.value = e.target.result
-      }
-      reader.readAsDataURL(fileObject)
-    }
-
     const handleFile = (e) => {
-      console.log(e.target.files[0])
-      const selectedImage = e.target.files[0]
-      createBase64Image(selectedImage)
+      file.value = e.target.files[0]
     }
-
     const addStudentModal = ref(false)
     const visibleScrollableDemo = ref(false)
     const uploadStudentModal = ref(false)
@@ -697,8 +706,8 @@ export default {
       loadDelete(selectedUser.value.id)
     }
     watch(msg, () => {
-      load()
       visibleVerticallyCenteredDemo.value = false
+      load()
     })
 
     watch(message, () => {
@@ -723,11 +732,13 @@ export default {
       file,
       handleFile,
       delStudent,
-      uploadFile,
       visibleScrollableDemo,
       addStudentModal,
       visibleVerticallyCenteredDemo,
       uploadStudentModal,
+      msgFile,
+      errorFile,
+      uploadFile,
     }
   },
   methods: {

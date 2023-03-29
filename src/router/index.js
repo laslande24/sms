@@ -228,12 +228,17 @@ const routes = [
       {
         path: 'personnel',
         name: 'Personnel',
-        component: () => import('@/views/Employee.vue'),
+        component: () => import('@/views/Personnels.vue'),
       },
       {
-        path: '/my-classes',
+        path: 'my-classes',
         name: 'My Classes',
         component: () => import('@/views/Classes.vue'),
+      },
+      {
+        path: 'settings',
+        name: 'Settings',
+        component: () => import('@/views/Settings.vue'),
       },
       // {
       //   path: '/personnel',
@@ -285,11 +290,6 @@ const routes = [
       //   path: '/chat',
       //   name: 'Chat',
       //   component: () => import('@/views/Chat.vue'),
-      // },
-      // {
-      //   path: '/settings',
-      //   name: 'Settings',
-      //   component: () => import('@/views/Settings.vue'),
       // },
     ],
   },

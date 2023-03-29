@@ -1,43 +1,42 @@
 import { ref } from 'vue'
 import axios from 'axios'
-import { base_link } from '@/composables/config'
+import { base_link, errorMessage } from '@/composables/config'
 
 const getPersonnel = () => {
-  const students = ref(null)
+  const personnels = ref(null)
   const error = ref(null)
   const load = async () => {
     try {
-      let data = await axios.get(base_link + '/student')
+      let data = await axios.get(base_link + '/school/personnel')
       let res = await data
       if (!res.data.success) {
-        console.log('Student', res.data.error)
         throw res.data.error
       }
-      students.value = res.data.data
+      personnels.value = res.data.data
 
       console.log(data)
     } catch (e) {
       error.value = e
+      console.log(e)
     }
   }
 
-  return { students, error, load }
+  return { personnels, error, load }
 }
 
 const addPersonnel = () => {
   const message = ref(null)
   const saveError = ref(null)
-  const save = async (student) => {
+  const save = async (personnel) => {
     try {
-      let data = await axios.post(base_link + '/student/', student)
+      let data = await axios.post(base_link + '/school/personnel', personnel)
       let res = await data
       if (!res.data.success) {
-        console.log('Student', res.data.error)
-        throw res.data.error
+        throw res.data.errors
       }
       message.value = res.data.data
     } catch (e) {
-      saveError.value = e
+      saveError.value = errorMessage(e)
       console.log('error', saveError.value)
     }
   }
@@ -45,26 +44,83 @@ const addPersonnel = () => {
   return { message, saveError, save }
 }
 
-const uploadStudent = (file) => {
-  const chapters = ref(null)
-  const error = ref(null)
-  const load = async () => {
+const deletePersonnel = () => {
+  const msg = ref(null)
+  const deleteError = ref(null)
+  const loadDelete = async (id) => {
     try {
-      let data = await axios.get(base_link + '/course/' + file + '/chapter')
+      let data = await axios.delete(base_link + '/school/personnel/' + id)
       let res = await data
       if (!res.data.success) {
-        console.log('course', res.data.error)
         throw res.data.error
       }
-      chapters.value = res.data.data
-      console.log(chapters.value)
+      msg.value = res.data.data
+      console.log(msg.value)
     } catch (e) {
-      error.value = e
-      console.log('error', error.value)
+      deleteError.value = e
+      console.log('error', deleteError.value)
     }
   }
 
-  return { chapters, error, load }
+  return { msg, deleteError, loadDelete }
+}
+const uploadPersonnel = () => {
+  const msgFile = ref(null)
+  const errorFile = ref(null)
+  const upload = async (form) => {
+    try {
+      let data = await axios.post(
+        base_link + '/school/personnel/upload',
+        form,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      )
+      let res = await data
+      if (!res.data.success) {
+        console.log(res.data)
+        throw res.data.error
+      }
+      errorFile.value = res.data.notlist
+      msgFile.value = res.data.data
+    } catch (e) {
+      errorFile.value = e
+      console.log('error', errorFile.value)
+    }
+  }
+
+  return { msgFile, errorFile, upload }
 }
 
-export { getStudent, uploadStudent, addStudent }
+const updatePersonnel = () => {
+  const updatemsg = ref(null)
+  const updateError = ref(null)
+  const update = async (personnel, id) => {
+    try {
+      let data = await axios.put(
+        base_link + '/school/personnel/' + id,
+        personnel,
+      )
+      let res = await data
+      if (!res.data.success) {
+        throw res.data.errors
+      }
+      updatemsg.value = res.data.data
+    } catch (e) {
+      updateError.value = errorMessage(e)
+      console.log('error', updateError.value)
+    }
+  }
+
+  return { updatemsg, updateError, update }
+}
+
+export {
+  getPersonnel,
+  uploadPersonnel,
+  addPersonnel,
+  deletePersonnel,
+  updatePersonnel,
+}
