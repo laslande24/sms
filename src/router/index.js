@@ -236,9 +236,22 @@ const routes = [
         component: () => import('@/views/Classes.vue'),
       },
       {
-        path: 'classes',
+        path: '/classes',
         name: 'Admin Classes',
-        component: () => import('@/views/Admin/Classes/index.vue'),
+        redirect: '/classes/index',
+        children: [
+          {
+            path: '/index',
+            name: 'Classes',
+            component: () => import('@/views/Admin/Classes/index.vue'),
+          },
+          {
+            path: '/details/:id',
+            name: 'Class Details',
+            props: true,
+            component: () => import('@/views/Admin/Classes/details.vue'),
+          },
+        ],
       },
       // {
       //   path: '/personnel',

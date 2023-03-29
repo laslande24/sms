@@ -6,7 +6,6 @@
           <option value="0">Select Class</option>
           <option value="1">One</option>
           <option value="2">Two</option>
-          <option value="3" disabled>Three</option>
         </CFormSelect>
       </CCol>
     </CRow>
