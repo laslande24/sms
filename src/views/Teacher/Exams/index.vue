@@ -7,13 +7,7 @@
             <h5>Questions</h5>
           </CCol>
           <CCol sm="3" class="d-sm-flex justify-content-sm-end">
-            <CButton
-              color="primary"
-              @click="
-                () => {
-                  questionModal = true
-                }
-              "
+            <CButton color="primary" @click="openModalQuestion"
               ><span class="text-white">Add Question</span></CButton
             >
           </CCol>
@@ -44,73 +38,35 @@
                 </CButton>
               </CTableDataCell>
             </CTableRow>
+            <CTableRow>
+              <CTableHeaderCell scope="row">2</CTableHeaderCell>
+              <CTableDataCell>Structurals</CTableDataCell>
+              <CTableDataCell>2</CTableDataCell>
+              <CTableDataCell>
+                <CButton color="info" size="sm" variant="outline">
+                  View All
+                </CButton>
+              </CTableDataCell>
+            </CTableRow>
           </CTableBody>
         </CTable>
       </CCardBody>
     </CCard>
     <CCard class="mb-3 border-light border-top-primary border-top-3">
-      <CCardHeader lass="bg-white d-flex align-items-center">
-        <h5>Exams</h5>
+      <CCardHeader class="bg-white">
+        <CRow>
+          <CCol sm="9" class="d-flex align-items-center">
+            <h5>Exams</h5>
+          </CCol>
+          <CCol sm="3" class="d-sm-flex justify-content-sm-end">
+            <CButton color="primary" @click="openModalExam"
+              ><span class="text-white">Add Exam</span></CButton
+            >
+          </CCol>
+        </CRow>
       </CCardHeader>
       <CCardBody>
         <CRow>
-          <CCol md="12">
-            <CCard class="border-light border-top-warning border-top-2">
-              <CCardHeader class="text-center text-bold">
-                CREATE AN EXAM
-              </CCardHeader>
-              <CCardBody>
-                <CForm>
-                  <CRow>
-                    <CCol md="6">
-                      <CInputGroup class="mb-3">
-                        <CInputGroupText id="basic-addon1">#</CInputGroupText>
-                        <CFormInput
-                          type="text"
-                          placeholder="Name"
-                          aria-label="name"
-                          aria-describedby="basic-addon1"
-                        />
-                      </CInputGroup>
-                    </CCol>
-                    <CCol md="6">
-                      <CInputGroup>
-                        <CInputGroupText>
-                          <i class="bi bi-book"></i>
-                        </CInputGroupText>
-                        <CFormSelect>
-                          <option>Select Course</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                        </CFormSelect>
-                      </CInputGroup>
-                    </CCol>
-                    <CCol md="6">
-                      <CInputGroup class="mb-3">
-                        <CInputGroupText id="basic-addon2">
-                          <i class="bi bi-calendar2"></i>
-                        </CInputGroupText>
-                        <CFormInput type="date" />
-                      </CInputGroup>
-                    </CCol>
-                    <CCol md="6">
-                      <CInputGroup class="mb-3">
-                        <CInputGroupText id="basic-addon3">
-                          <i class="bi bi-clock"></i>
-                        </CInputGroupText>
-                        <CFormInput
-                          type="text"
-                          placeholder="Duration (in hours)"
-                          aria-label="duration"
-                          aria-describedby="basic-addon3"
-                        />
-                      </CInputGroup>
-                    </CCol>
-                  </CRow>
-                </CForm>
-              </CCardBody>
-            </CCard>
-          </CCol>
           <CCol md="12">
             <CTable>
               <CTableHead>
@@ -261,7 +217,37 @@
             <CCard class="border-light">
               <CCardBody>
                 <CCardTitle class="text-center">Structural</CCardTitle>
-                <CRow> </CRow>
+                <CRow class="mb-2">
+                  <CCol>
+                    <CButton class="w-100" color="primary" @click="addField"
+                      >Add</CButton
+                    >
+                  </CCol>
+                  <CCol>
+                    <CButton class="w-100" color="danger" @click="removeField"
+                      ><span class="text-white">Remove</span></CButton
+                    >
+                  </CCol>
+                </CRow>
+                <CContainer v-for="key in subpartCount" :key="key">
+                  <CRow class="mb-2">
+                    <CCol md="10">
+                      <CFormTextarea
+                        :id="key"
+                        v-model="subpartValues['question-' + key]"
+                        placeholder="Enter sub question"
+                        row="1"
+                      ></CFormTextarea>
+                    </CCol>
+                    <CCol md="2"
+                      ><CFormInput
+                        type="number"
+                        :id="key"
+                        v-model="subpartMarks['mark-' + key]"
+                        placeholder="Enter marks"
+                    /></CCol>
+                  </CRow>
+                </CContainer>
               </CCardBody>
             </CCard>
           </div>
@@ -273,6 +259,127 @@
           @click="
             () => {
               questionModal = false
+            }
+          "
+        >
+          Close
+        </CButton>
+        <CButton color="primary">Save</CButton>
+      </CModalFooter>
+    </CModal>
+    <CModal
+      size="lg"
+      backdrop="static"
+      :visible="examModal"
+      @close="
+        () => {
+          examModal = false
+        }
+      "
+    >
+      <CModalHeader>
+        <CModalTitle>CREATE AN EXAM</CModalTitle>
+      </CModalHeader>
+      <CModalBody>
+        <CForm>
+          <CRow>
+            <CCol md="6">
+              <CInputGroup class="mb-3">
+                <CInputGroupText id="basic-addon1">#</CInputGroupText>
+                <CFormInput
+                  type="text"
+                  placeholder="Name"
+                  aria-label="name"
+                  aria-describedby="basic-addon1"
+                />
+              </CInputGroup>
+            </CCol>
+            <CCol md="6">
+              <CInputGroup>
+                <CInputGroupText>
+                  <i class="bi bi-book"></i>
+                </CInputGroupText>
+                <CFormSelect>
+                  <option>Select Course</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                </CFormSelect>
+              </CInputGroup>
+            </CCol>
+            <CCol md="6">
+              <CInputGroup class="mb-3">
+                <CInputGroupText id="basic-addon2">
+                  <i class="bi bi-calendar2"></i>
+                </CInputGroupText>
+                <CFormInput type="date" />
+              </CInputGroup>
+            </CCol>
+            <CCol md="6">
+              <CInputGroup class="mb-3">
+                <CInputGroupText id="basic-addon3">
+                  <i class="bi bi-clock"></i>
+                </CInputGroupText>
+                <CFormInput
+                  type="text"
+                  placeholder="Duration (in hours)"
+                  aria-label="duration"
+                  aria-describedby="basic-addon3"
+                />
+              </CInputGroup>
+            </CCol>
+          </CRow>
+        </CForm>
+      </CModalBody>
+      <CModalFooter>
+        <CButton
+          color="secondary"
+          @click="
+            () => {
+              examModal = false
+            }
+          "
+        >
+          Close
+        </CButton>
+        <CButton color="primary" @click="switchToAddQuestion">Next</CButton>
+      </CModalFooter>
+    </CModal>
+    <CModal
+      size="lg"
+      backdrop="static"
+      :visible="questionToExamModal"
+      @close="
+        () => {
+          questionToExamModal = false
+        }
+      "
+    >
+      <CModalHeader>
+        <CModalTitle>Add questions for: First Term Exams</CModalTitle>
+      </CModalHeader>
+      <CModalBody>
+        <CForm>
+          <CRow>
+            <CCol md="6">
+              <CInputGroup class="mb-3">
+                <CInputGroupText id="basic-addon1">#</CInputGroupText>
+                <CFormInput
+                  type="text"
+                  placeholder="Name"
+                  aria-label="name"
+                  aria-describedby="basic-addon1"
+                />
+              </CInputGroup>
+            </CCol>
+          </CRow>
+        </CForm>
+      </CModalBody>
+      <CModalFooter>
+        <CButton
+          color="secondary"
+          @click="
+            () => {
+              questionToExamModal = false
             }
           "
         >
@@ -294,13 +401,47 @@ export default {
   data() {
     return {
       questionModal: false,
+      examModal: false,
+      questionToExamModal: false,
       questionType: 0,
+      subpartCount: 0,
+      subpartValues: {},
+      subpartMarks: {},
     }
   },
   methods: {
+    openModalQuestion() {
+      this.resetInputQuestion()
+      this.questionModal = true
+    },
+    openModalExam() {
+      this.resetInpuExam()
+      this.examModal = true
+    },
+    resetInputQuestion() {
+      this.subpartCount = 0
+      this.questionType = 0
+      this.subpartValues = {}
+      this.subpartMarks = {}
+    },
+    resetInpuExam() {
+      this.subpartCount = 0
+      this.questionType = 0
+      this.subpartValues = {}
+      this.subpartMarks = {}
+    },
+    // switchToAddQuestion() {
+
+    // },
     onChoice(event) {
       this.questionType = event.target.value
       console.log(event.target.value)
+    },
+    addField() {
+      this.subpartCount++
+    },
+    removeField() {
+      this.subpartCount--
     },
   },
   setup() {
