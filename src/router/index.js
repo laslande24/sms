@@ -7,14 +7,14 @@ import TeacherLayout from '@/layouts/TeacherLayout.vue'
 import GuestLayout from '@/layouts/GuestLayout'
 import jwtDecode from 'jwt-decode'
 function isAuthenticated() {
-  const token = localStorage.getItem('auth_token')
+  const token = localStorage.getItem('token')
+  console.log(token)
   if (token) {
     // Decode the token and check if it is still valid
     // You can use a library like jwt-decode to decode JWT tokens
     const decodedToken = jwtDecode(token)
     const currentTime = Date.now() / 1000 // convert milliseconds to seconds
     if (decodedToken.exp > currentTime) {
-      // Token is still valid
       return true
     } else {
       // Token has expired
@@ -26,6 +26,54 @@ function isAuthenticated() {
     return false
   }
 }
+
+function isTeacherAuthenticated() {
+  const token = localStorage.getItem('auth_token')
+  if (token) {
+    // Decode the token and check if it is still valid
+    // You can use a library like jwt-decode to decode JWT tokens
+    const decodedToken = jwtDecode(token)
+    console.log(decodedToken)
+    const currentTime = Date.now() / 1000 // convert milliseconds to seconds
+    if (decodedToken.exp > currentTime) {
+      if (decodedToken.is_teacher) {
+        return true
+      }
+      return false
+    } else {
+      // Token has expired
+      localStorage.removeItem('auth_token')
+      return false
+    }
+  } else {
+    // No token found
+    return false
+  }
+}
+
+function isAdminAuthenticated() {
+  const token = localStorage.getItem('auth_token')
+  if (token) {
+    // Decode the token and check if it is still valid
+    // You can use a library like jwt-decode to decode JWT tokens
+    const decodedToken = jwtDecode(token)
+    const currentTime = Date.now() / 1000 // convert milliseconds to seconds
+    if (decodedToken.exp > currentTime) {
+      if (decodedToken.is_teacher) {
+        return true
+      }
+      return false
+    } else {
+      // Token has expired
+      localStorage.removeItem('auth_token')
+      return false
+    }
+  } else {
+    // No token found
+    return false
+  }
+}
+
 const routes = [
   {
     path: '/',
@@ -71,6 +119,13 @@ const routes = [
     name: 'Student',
     component: DefaultLayout,
     redirect: '/student/my-courses',
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated()) {
+        next()
+      } else {
+        next({ name: 'LandingPage' })
+      }
+    },
     children: [
       {
         path: '/student/dashboard',
@@ -149,13 +204,6 @@ const routes = [
         path: 'settings',
         name: 'Settings',
         component: () => import('@/views/Settings.vue'),
-        beforeEnter: (to, from, next) => {
-          if (isAuthenticated()) {
-            next()
-          } else {
-            next({ name: 'LandingPage' })
-          }
-        },
       },
       {
         path: '/student/my-exam',
@@ -176,6 +224,13 @@ const routes = [
     name: 'Teacher',
     component: TeacherLayout,
     redirect: '/teacher/dashboard',
+    beforeEnter: (to, from, next) => {
+      if (isTeacherAuthenticated()) {
+        next()
+      } else {
+        next({ name: 'LandingPage' })
+      }
+    },
     children: [
       {
         path: 'dashboard',
@@ -242,6 +297,13 @@ const routes = [
     name: 'Admin',
     component: AdminLayout,
     redirect: '/admin/dashboard',
+    beforeEnter: (to, from, next) => {
+      if (isAdminAuthenticated()) {
+        next()
+      } else {
+        next({ name: 'LandingPage' })
+      }
+    },
     children: [
       {
         path: 'dashboard',

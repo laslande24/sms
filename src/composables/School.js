@@ -1,7 +1,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { base_link } from '@/composables/config'
-
 const addschool = () => {
   const message = ref(null)
   const error = ref(null)
@@ -13,6 +12,7 @@ const addschool = () => {
         console.log('Student', res.data.error)
         throw res.data.error
       }
+
       message.value = res.data.data
 
       console.log(data)
@@ -54,12 +54,11 @@ const login = () => {
     try {
       let data = await axios.post(base_link + '/api/token/', info)
       let res = await data
-      if (!res.data.success) {
-        console.log('Part', res.data.error)
-        throw res.data.error
+      if (res.data.detail) {
+        console.log('Part', res.data.detail)
+        throw res.data.detail
       }
-      message.value = res.data.data
-
+      message.value = res.data['access']
       console.log(data)
     } catch (e) {
       error.value = e

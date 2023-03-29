@@ -116,14 +116,12 @@ export default {
     const { message, load, error } = login()
 
     watch(message, () => {
-      localStorage.setItem('token', message)
+      localStorage.setItem('token', message.value)
       router.push({ name: 'All Course' })
     })
 
     const loginUser = () => {
-      console.log('Good')
       load({ username: username.value, password: password.value })
-      router.push({ name: 'LandingPage' })
     }
     return {
       router,
