@@ -125,6 +125,11 @@ const routes = [
         component: () => import('@/views/Student/Assignment.vue'),
       },
       {
+        path: '/student/portfolio',
+        name: 'Student Portfolio',
+        component: () => import('@/views/Student/Portfolio.vue'),
+      },
+      {
         path: '/student/chat',
         name: 'Student Chat',
         component: () => import('@/views/Chat.vue'),
@@ -241,7 +246,7 @@ const routes = [
         redirect: '/classes/index',
         children: [
           {
-            path: '/index',
+            path: 'index',
             name: 'Classes',
             component: () => import('@/views/Admin/Classes/index.vue'),
           },

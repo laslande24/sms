@@ -12,7 +12,7 @@
             <CCardFooter>
               <CCardLink
                 class="text-decoration-none text-white"
-                href="javascript:;"
+                href="/student/portfolio"
               >
                 <i class="bi bi-caret-down-fill"></i>
               </CCardLink>
