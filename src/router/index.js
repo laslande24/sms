@@ -217,8 +217,8 @@ const routes = [
         component: () => import('@/views/Account.vue'),
       },
       {
-        path: 'settings',
-        name: 'Settings',
+        path: '/student/settings',
+        name: 'Student Settings',
         component: () => import('@/views/Settings.vue'),
       },
       {

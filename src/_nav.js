@@ -124,13 +124,13 @@ const navTeacher = [
   {
     component: 'CNavItem',
     name: 'My Classes',
-    to: 'my-classes',
+    to: '/teacher/my-classes',
     icon: 'cil-school',
   },
   {
     component: 'CNavItem',
     name: 'My Courses',
-    to: 'my-courses',
+    to: '/teacher/my-courses',
     icon: 'cil-book',
   },
   {
@@ -152,7 +152,7 @@ const navTeacher = [
   {
     component: 'CNavItem',
     name: 'Settings',
-    to: 'Settings',
+    to: '/teacher/Settings',
     icon: 'cil-settings',
   },
   {
