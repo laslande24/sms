@@ -20,10 +20,7 @@
             >
               <CIcon class="mx-2" icon="cil-chat-bubble" size="lg" />
             </router-link>
-            <router-link
-              class="meet"
-              :to="{ name: 'Teacher Meet', params: { id: course.id } }"
-            >
+            <a @click="modal">
               <span class=""></span>
               <CIcon
                 style="color: crimson"
@@ -31,7 +28,7 @@
                 icon="cil-video"
                 size="lg"
               />
-            </router-link>
+            </a>
           </div>
         </div>
 
@@ -70,24 +67,12 @@
                 <CIcon icon="cil-listRich" size="xl" />
               </template>
               <template #footer>
-                <div class="d-flex justify-content-between">
-                  <router-link
-                    :to="{ name: 'Course Chapter', params: { id: course.id } }"
-                  >
-                    View more
-                    <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
-                  </router-link>
-                  <button
-                    @click="
-                      () => {
-                        visibleVerticallyCenteredDemo = true
-                      }
-                    "
-                    class="btn btn-primary btn-sm"
-                  >
-                    Add Chapter
-                  </button>
-                </div>
+                <router-link
+                  :to="{ name: 'Course Chapter', params: { id: course.id } }"
+                >
+                  View more
+                  <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
+                </router-link>
               </template>
             </CWidgetStatsF>
           </CCol>
@@ -97,34 +82,22 @@
                 <CIcon icon="cil-copy" size="xl" />
               </template>
               <template #footer>
-                <div class="d-flex justify-content-between">
-                  <CLink
-                    class="font-weight-bold font-xs text-medium-emphasis"
-                    href="https://coreui.io/"
-                    rel="noopener norefferer"
-                    target="_blank"
-                  >
-                    View more
-                    <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
-                  </CLink>
-                  <button
-                    @click="
-                      () => {
-                        visibleVerticallyCenteredDemo = true
-                      }
-                    "
-                    class="btn btn-primary btn-sm"
-                  >
-                    Add PastPaper
-                  </button>
-                </div>
+                <CLink
+                  class="font-weight-bold font-xs text-medium-emphasis"
+                  href="https://coreui.io/"
+                  rel="noopener norefferer"
+                  target="_blank"
+                >
+                  View more
+                  <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
+                </CLink>
               </template>
             </CWidgetStatsF>
           </CCol>
           <CCol class="py-2 col-sm-6 col-md-4">
             <CWidgetStatsF
               color="warning"
-              title="Students"
+              title="Mate"
               :value="course.students.length"
             >
               <template #icon>
@@ -165,29 +138,6 @@
               </template>
             </CWidgetStatsF>
           </CCol>
-          <CCol class="py-2 col-sm-6 col-md-4">
-            <CWidgetStatsF
-              color="success"
-              title="Local Languages"
-              :value="course.students.length"
-            >
-              <template #icon>
-                <CIcon icon="cil-translate" size="xl" />
-              </template>
-              <template #footer>
-                <router-link
-                  class="font-weight-bold font-xs text-medium-emphasis"
-                  :to="{
-                    name: 'Student Translations',
-                  }"
-                  rel="noopener norefferer"
-                >
-                  View more
-                  <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
-                </router-link>
-              </template>
-            </CWidgetStatsF>
-          </CCol>
         </CRow>
       </div>
     </div>
@@ -200,7 +150,6 @@
       {{ error }}
     </div>
   </div>
-
   <CModal
     alignment="center"
     :visible="visibleVerticallyCenteredDemo"
@@ -211,54 +160,18 @@
     "
   >
     <CModalHeader>
-      <CModalTitle>Add PastPaper</CModalTitle>
-    </CModalHeader>
-    <CModalBody>
-      <CForm>
-        <input type="text" placeholder="name " class="form-control mb-2" />
-        <input
-          type="file"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="choice file"
-        />
-      </CForm>
-    </CModalBody>
-    <CModalFooter>
-      <CButton
-        color="secondary"
-        @click="
-          () => {
-            visibleVerticallyCenteredDemo = false
-          }
-        "
-      >
-        Close
-      </CButton>
-      <CButton color="primary">Save changes</CButton>
-    </CModalFooter>
-  </CModal>
-  <CModal
-    alignment="center"
-    :visible="visibleVerticallyCenteredDemo"
-    @close="
-      () => {
-        visibleVerticallyCenteredDemo = false
-      }
-    "
-  >
-    <CModalHeader>
-      <CModalTitle>New Chapter</CModalTitle>
+      <CModalTitle>Create a new meeting</CModalTitle>
     </CModalHeader>
     <CModalBody>
       <CForm>
         <CFormInput
-          type="file"
+          v-model="topic"
+          type="text"
           id="exampleFormControlInput1"
-          :label="ass.name"
-          placeholder="choice file"
+          placeholder="Lesson"
         />
       </CForm>
+      {{ store.state.user }}
     </CModalBody>
     <CModalFooter>
       <CButton
@@ -271,33 +184,43 @@
       >
         Close
       </CButton>
-      <CButton color="primary">Save changes</CButton>
+      <router-link
+        :to="{ name: 'Teacher Meet', params: { id: course.id, topic: topic } }"
+      >
+        <CButton color="primary">Continue</CButton>
+      </router-link>
     </CModalFooter>
   </CModal>
 </template>
 
 <script>
 import { getCourse } from '@/composables/Course'
-
+import { useStore } from 'vuex'
 import { ref } from 'vue'
-
 export default {
   name: 'details',
   components: {},
   props: ['id'],
   setup(props) {
-    const { error, course, load } = getCourse(props.id)
+    const store = useStore()
     const visibleVerticallyCenteredDemo = ref(false)
-    const visibleVerticallyCentered = ref(false)
+    const { error, course, load } = getCourse(props.id)
     const msg = ref(null)
     load()
+
+    const modal = () => {
+      visibleVerticallyCenteredDemo.value = true
+    }
+    const topic = ref('Lesson-')
 
     return {
       course,
       error,
+      topic,
+      modal,
       msg,
+      store,
       visibleVerticallyCenteredDemo,
-      visibleVerticallyCentered,
     }
   },
 }
