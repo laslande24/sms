@@ -1,166 +1,186 @@
 <template>
-  <CNav
-    variant="tabs"
-    role="tablist"
-    class="d-flex gap-3"
-    style="justify-content: center"
+  <div
+    class="d-flex justify-content-center align-items-center vh-80 mt-5"
+    v-if="exams == null && error == null"
   >
-    <CNavItem>
-      <CNavLink
-        href="javascript:void(0);"
-        :active="tabPanePillsActiveKey === 1"
-        @click="
-          () => {
-            tabPanePillsActiveKey = 1
-          }
-        "
-      >
-        ACTIVE
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink
-        href="javascript:void(0);"
-        :active="tabPanePillsActiveKey === 2"
-        @click="
-          () => {
-            tabPanePillsActiveKey = 2
-          }
-        "
-      >
-        PAST
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-  <CTabContent class="mt-4">
-    <CTabPane
-      role="tabpanel"
-      aria-labelledby="active-tab"
-      :visible="tabPanePillsActiveKey === 1"
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div v-if="exams != null">
+    <CNav
+      variant="tabs"
+      role="tablist"
+      class="d-flex gap-3"
+      style="justify-content: center"
     >
-      <div class="row" v-if="data.length > 0">
-        <div
-          v-for="(item, key) in data"
-          :key="key"
-          class="col-xs-6 col-sm-6 col-md-4 col-lg-3 p-2"
+      <CNavItem>
+        <CNavLink
+          href="javascript:void(0);"
+          :active="tabPanePillsActiveKey === 1"
+          @click="
+            () => {
+              tabPanePillsActiveKey = 1
+            }
+          "
         >
-          <div class="bg-white shadow-sm p-2 exam-card">
-            <div class="img-div">
-              <img :src="'http://localhost:8000/static/images/' + item.image" />
-              <div>
-                <p class="my-1">{{ item.course }}</p>
+          ACTIVE
+        </CNavLink>
+      </CNavItem>
+      <CNavItem>
+        <CNavLink
+          href="javascript:void(0);"
+          :active="tabPanePillsActiveKey === 2"
+          @click="
+            () => {
+              tabPanePillsActiveKey = 2
+            }
+          "
+        >
+          PAST
+        </CNavLink>
+      </CNavItem>
+    </CNav>
+    <CTabContent class="mt-4">
+      <CTabPane
+        role="tabpanel"
+        aria-labelledby="active-tab"
+        :visible="tabPanePillsActiveKey === 1"
+      >
+        <div class="row" v-if="data.length > 0">
+          <div
+            v-for="(item, key) in data"
+            :key="key"
+            class="col-xs-6 col-sm-6 col-md-4 col-lg-3 p-2"
+          >
+            <div class="bg-white shadow-sm p-2 exam-card">
+              <div class="img-div">
+                <img
+                  :src="'http://localhost:8000/static/images/' + item.image"
+                />
+                <div>
+                  <p class="my-1">{{ item.course }}</p>
+                </div>
               </div>
-            </div>
-            <p class="my-2" style="font-size: 1rem; font-weight: 600">
-              {{ item.name }}
-            </p>
-            <p class="my-1">
-              <CIcon
-                style="color: #3b5998"
-                class="me-2"
-                icon="cil-calendar"
-                size="lg"
-              />{{ startFormat(item.date, item.time) }}
-            </p>
-            <div class="row">
-              <p class="my-1 col-sm-5">
+              <p class="my-2" style="font-size: 1rem; font-weight: 600">
+                {{ item.name }}
+              </p>
+              <p class="my-1">
                 <CIcon
                   style="color: #3b5998"
                   class="me-2"
-                  icon="cil-history"
+                  icon="cil-calendar"
                   size="lg"
-                />2H{{ item.duration }}
+                />{{ startFormat(item.date, item.time) }}
               </p>
-              <p class="my-1 col-sm-6">
-                <CIcon
-                  style="color: #3b5998"
-                  class="mx-2"
-                  icon="cil-listNumbered"
-                  size="lg"
-                />{{ item.question.length }}
-              </p>
-              <router-link
-                :to="{ name: 'Take Exam', params: { id: item.exam_id } }"
-              >
-                take axam
-              </router-link>
+              <div class="row">
+                <p class="my-1 col-sm-5">
+                  <CIcon
+                    style="color: #3b5998"
+                    class="me-2"
+                    icon="cil-history"
+                    size="lg"
+                  />2H{{ item.duration }}
+                </p>
+                <p class="my-1 col-sm-6">
+                  <CIcon
+                    style="color: #3b5998"
+                    class="mx-2"
+                    icon="cil-listNumbered"
+                    size="lg"
+                  />{{ item.question.length }}
+                </p>
+                <router-link
+                  :to="{ name: 'Take Exam', params: { id: item.exam_id } }"
+                >
+                  take axam
+                </router-link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div v-else>
-        <h3>No exam available</h3>
-      </div>
-    </CTabPane>
-    <CTabPane
-      role="tabpanel"
-      aria-labelledby="profile-tab"
-      :visible="tabPanePillsActiveKey === 2"
-    >
-      <div class="row" v-if="data.length > 0">
-        <div
-          v-for="(item, key) in data"
-          :key="key"
-          class="col-xs-6 col-sm-6 col-md-4 col-lg-3 p-2"
-        >
-          <div class="bg-white shadow-sm p-2 exam-card">
-            <div class="img-div">
-              <img :src="'http://localhost:8000/static/images/' + item.image" />
-              <div>
-                <p class="my-1">{{ item.course }}</p>
+        <div v-else>
+          <h3>No exam available</h3>
+        </div>
+      </CTabPane>
+      <CTabPane
+        role="tabpanel"
+        aria-labelledby="profile-tab"
+        :visible="tabPanePillsActiveKey === 2"
+      >
+        <div class="row" v-if="data.length > 0">
+          <div
+            v-for="(item, key) in data"
+            :key="key"
+            class="col-xs-6 col-sm-6 col-md-4 col-lg-3 p-2"
+          >
+            <div class="bg-white shadow-sm p-2 exam-card">
+              <div class="img-div">
+                <img
+                  :src="'http://localhost:8000/static/images/' + item.image"
+                />
+                <div>
+                  <p class="my-1">{{ item.course }}</p>
+                </div>
               </div>
-            </div>
-            <p class="my-2" style="font-size: 1rem; font-weight: 600">
-              {{ item.name }}
-            </p>
-            <p class="my-1">
-              <CIcon
-                style="color: #3b5998"
-                class="me-2"
-                icon="cil-calendar"
-                size="lg"
-              />{{ startFormat(item.date, item.time) }}
-            </p>
-            <div class="row">
-              <p class="my-1 col-sm-5">
+              <p class="my-2" style="font-size: 1rem; font-weight: 600">
+                {{ item.name }}
+              </p>
+              <p class="my-1">
                 <CIcon
                   style="color: #3b5998"
                   class="me-2"
-                  icon="cil-history"
+                  icon="cil-calendar"
                   size="lg"
-                />2H{{ item.duration }}
+                />{{ startFormat(item.date, item.time) }}
               </p>
-              <p class="my-1 col-sm-6">
-                <CIcon
-                  style="color: #3b5998"
-                  class="mx-2"
-                  icon="cil-listNumbered"
-                  size="lg"
-                />{{ item.question.length }}
-              </p>
-              <router-link
-                :to="{ name: 'Take Exam', params: { id: item.exam_id } }"
-              >
-                result
-              </router-link>
+              <div class="row">
+                <p class="my-1 col-sm-5">
+                  <CIcon
+                    style="color: #3b5998"
+                    class="me-2"
+                    icon="cil-history"
+                    size="lg"
+                  />2H{{ item.duration }}
+                </p>
+                <p class="my-1 col-sm-6">
+                  <CIcon
+                    style="color: #3b5998"
+                    class="mx-2"
+                    icon="cil-listNumbered"
+                    size="lg"
+                  />{{ item.question.length }}
+                </p>
+                <router-link
+                  :to="{ name: 'Take Exam', params: { id: item.exam_id } }"
+                >
+                  result
+                </router-link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div v-else>
-        <h3>No exam available</h3>
-      </div>
-    </CTabPane>
-  </CTabContent>
+        <div v-else>
+          <h3>No exam available</h3>
+        </div>
+      </CTabPane>
+    </CTabContent>
+  </div>
 </template>
 
 <script>
 import { getExam } from '@/composables/Exam'
 import { computed, ref } from 'vue'
 import { dateFormat } from '@/utils/dateFormat.js'
+import exam from '@/views/Student/Exam/index.vue'
 
 export default {
   name: 'index',
+  methods: {
+    exam() {
+      return exam
+    },
+  },
   data() {
     return {}
   },
@@ -200,6 +220,7 @@ export default {
       startFormat,
       data,
       ass,
+      exams,
       tabPanePillsActiveKey,
       visibleVerticallyCenteredDemo,
       modal,

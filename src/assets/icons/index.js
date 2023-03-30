@@ -25,6 +25,9 @@ import {
   cibCcApplePay,
   cibCcAmex,
   cilArrowThickToTop,
+  cilTranslate,
+  cilInstitution,
+  cilBookmark,
 } from '@coreui/icons'
 import { cifUs, cifBr, cifIn, cifFr, cifEs, cifPl } from '@coreui/icons'
 import {
@@ -168,6 +171,8 @@ export const iconsSet = Object.assign(
     cilFolder,
     cilPaperclip,
     cilSend,
+    cilInstitution,
+    cilBookmark,
     cilChevronRight,
     cilArrowThickToBottom,
     cilCopy,
@@ -178,6 +183,7 @@ export const iconsSet = Object.assign(
     cilListNumbered,
     cilDescription,
     cilArrowThickToTop,
+    cilTranslate,
   },
   {
     cifUs,

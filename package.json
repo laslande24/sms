@@ -33,6 +33,8 @@
     "core-js": "^3.26.1",
     "jwt-decode": "^3.1.2",
     "vue": "^3.2.47",
+    "bootstrap-icons": "^1.10.3",
+    "boxicons": "^2.1.4",
     "vue-router": "^4.1.6",
     "vuelidate": "^0.7.7",
     "vuex": "^4.1.0"

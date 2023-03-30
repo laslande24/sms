@@ -53,7 +53,6 @@
               <div class="chat-body">
                 <div class="chat-content">
                   <p>{{ message.text }}</p>
-                  >
                 </div>
               </div>
             </div>
@@ -85,7 +84,7 @@
 <script>
 import axios from 'axios'
 
-const apiKey = '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'
+const apiKey = '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'
 
 const apiUrl = 'https://api.openai.com/v1/completions'
 

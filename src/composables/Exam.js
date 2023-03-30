@@ -95,4 +95,46 @@ const getAnswer = () => {
   return { answer, error, load }
 }
 
-export { getExam, getExamQuestion, getAnswer }
+const AddExam = () => {
+  const addExamMsg = ref(null)
+  const errorExam = ref(null)
+  const loadExam = async (info) => {
+    try {
+      let data = await axios.post(base_link + '/exam/', info)
+      let res = await data
+      if (!res.data.success) {
+        console.log('answer', res.data.error)
+        throw res.data.error
+      }
+      addExamMsg.value = res.data.data
+    } catch (e) {
+      errorExam.value = e
+      console.log('error', errorExam.value)
+    }
+  }
+
+  return { addExamMsg, errorExam, loadExam }
+}
+
+const AddQuestion = () => {
+  const addQuestMsg = ref(null)
+  const errorQuest = ref(null)
+  const loadQuest = async (info) => {
+    try {
+      let data = await axios.post(base_link + '/exam/', info)
+      let res = await data
+      if (!res.data.success) {
+        console.log('answer', res.data.error)
+        throw res.data.error
+      }
+      addQuestMsg.value = res.data.data
+    } catch (e) {
+      errorQuest.value = e
+      console.log('error', errorQuest.value)
+    }
+  }
+
+  return { addQuestMsg, errorQuest, loadQuest }
+}
+
+export { getExam, getExamQuestion, getAnswer, AddQuestion, AddExam }

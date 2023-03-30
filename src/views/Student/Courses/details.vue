@@ -141,6 +141,29 @@
               </template>
             </CWidgetStatsF>
           </CCol>
+          <CCol class="py-2 col-sm-6 col-md-4">
+            <CWidgetStatsF
+              color="success"
+              title="Local Languages"
+              :value="course.students.length"
+            >
+              <template #icon>
+                <CIcon icon="cil-translate" size="xl" />
+              </template>
+              <template #footer>
+                <router-link
+                  class="font-weight-bold font-xs text-medium-emphasis"
+                  :to="{
+                    name: 'Student Translations',
+                  }"
+                  rel="noopener norefferer"
+                >
+                  View more
+                  <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
+                </router-link>
+              </template>
+            </CWidgetStatsF>
+          </CCol>
         </CRow>
       </div>
     </div>

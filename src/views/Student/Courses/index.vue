@@ -1,4 +1,12 @@
 <template>
+  <div
+    class="d-flex justify-content-center align-items-center vh-80 mt-5"
+    v-if="courses == null && error == null"
+  >
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <CRow v-if="courses != null" class="row p-0">
     <div
       v-for="(course, index) in courses"

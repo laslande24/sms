@@ -72,14 +72,14 @@ const navStudent = [
     component: 'CNavItem',
     name: 'Assignment',
     to: '/student/Assignment',
-    icon: 'cil-layers',
+    icon: 'cil-bookmark',
   },
-  {
-    component: 'CNavItem',
-    name: 'Chat',
-    to: '/student/Chat',
-    icon: 'cil-speech',
-  },
+  // {
+  //   component: 'CNavItem',
+  //   name: 'Chat',
+  //   to: '/student/Chat',
+  //   icon: 'cil-speech',
+  // },
   {
     component: 'CNavItem',
     name: 'Assistant',
@@ -90,7 +90,7 @@ const navStudent = [
     component: 'CNavItem',
     name: 'Exams',
     to: '/student/my-exam',
-    icon: 'cil-speech',
+    icon: 'cil-layers',
   },
   {
     component: 'CNavTitle',
@@ -135,9 +135,9 @@ const navTeacher = [
   },
   {
     component: 'CNavItem',
-    name: 'Exams',
-    to: 'Chat',
-    icon: 'cil-speech',
+    name: 'Teacher Exam',
+    to: '/teacher/exam',
+    icon: 'cil-layers',
   },
   {
     component: 'CNavItem',
@@ -184,7 +184,7 @@ const navAdmin = [
     component: 'CNavItem',
     name: 'Classes',
     to: '/admin/class',
-    icon: 'cil-library',
+    icon: 'cil-institution',
   },
   {
     component: 'CNavItem',
@@ -195,13 +195,13 @@ const navAdmin = [
   {
     component: 'CNavItem',
     name: 'Courses',
-    to: 'admin/my-courses',
+    to: '/admin/my-courses',
     icon: 'cil-book',
   },
   {
     component: 'CNavItem',
     name: 'Exam',
-    to: 'student/exam',
+    to: '/student/exam',
     icon: 'cil-layers',
   },
   {

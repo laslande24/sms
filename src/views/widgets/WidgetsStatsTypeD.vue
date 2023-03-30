@@ -10,7 +10,7 @@
         ]"
       >
         <template #icon
-          ><CIcon icon="cib-facebook" height="52" class="my-4 text-white"
+          ><CIcon icon="cil-people" height="52" class="my-4 text-white"
         /></template>
         <template #chart>
           <CChart
@@ -52,7 +52,7 @@
         ]"
       >
         <template #icon
-          ><CIcon icon="cib-twitter" height="52" class="my-4 text-white"
+          ><CIcon icon="cil-book" height="52" class="my-4 text-white"
         /></template>
         <template #chart>
           <CChart
@@ -94,7 +94,7 @@
         ]"
       >
         <template #icon
-          ><CIcon icon="cib-linkedin" height="52" class="my-4 text-white"
+          ><CIcon icon="cil-school" height="52" class="my-4 text-white"
         /></template>
         <template #chart>
           <CChart

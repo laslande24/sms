@@ -1,89 +1,96 @@
 <template>
   <div>
-    <CRow class="gx-4 gy-2">
-      <CCol :lg="8">
-        <CCardGroup class="text-white text-center">
-          <CCard class="first-card-background" style="height: 25rem">
-            <CCardHeader style="height: 52.59px"></CCardHeader>
-            <CCardBody class="d-flex flex-column justify-content-center">
-              <i class="bi bi-person-vcard fs-1 mb-2"></i>
-              <CCardTitle>PORTFOLIO</CCardTitle>
-            </CCardBody>
-            <CCardFooter>
-              <CCardLink
-                class="text-decoration-none text-white"
-                href="javascript:;"
-              >
-                <i class="bi bi-caret-down-fill"></i>
-              </CCardLink>
-            </CCardFooter>
-          </CCard>
-          <CCard class="second-card-background">
-            <CCardHeader
-              >PLANS<span class="fs-4 text-bold">2</span></CCardHeader
-            >
-            <CCardBody class="d-flex flex-column justify-content-center">
-              <i class="bi bi-mortarboard fs-1 mb-2"></i>
-              <CCardTitle>MY PLANS</CCardTitle>
-            </CCardBody>
-            <CCardFooter>
-              <CCardLink
-                class="text-decoration-none text-white"
-                href="javascript:;"
-              >
-                <i class="bi bi-caret-down-fill"></i>
-              </CCardLink>
-            </CCardFooter>
-          </CCard>
-          <CCard class="third-card-background">
-            <CCardHeader
-              >GOALS<span class="fs-4 text-bold">2</span></CCardHeader
-            >
-            <CCardBody class="d-flex flex-column justify-content-center">
-              <i class="bi bi-calendar2-check fs-1 mb-2"></i>
-              <CCardTitle>MY GOALS</CCardTitle>
-            </CCardBody>
-            <CCardFooter>
-              <CCardLink
-                class="text-decoration-none text-white"
-                href="javascript:;"
-              >
-                <i class="bi bi-caret-down-fill"></i>
-              </CCardLink>
-            </CCardFooter>
-          </CCard>
-        </CCardGroup>
-      </CCol>
-      <CCol :lg="4" class="mb-4">
-        <CCard class="bg-danger text-white">
-          <CCardHeader class="py-3"
-            ><span class="fs-5">Academic Resources</span></CCardHeader
-          >
-          <CListGroup flush class="text-dark">
-            <CListGroupItem component="a" href="/student/transcript">
-              <i class="bi bi-receipt"></i> Transcripts
-            </CListGroupItem>
-            <CListGroupItem component="a" href="/student/weakness">
-              <i class="bi bi-emoji-frown"></i> Weakness
-            </CListGroupItem>
-          </CListGroup>
+    <CRow>
+      <CCol :md="12">
+        <CCard class="mb-4">
+          <CCardBody>
+            <CRow>
+              <CCol :sm="5">
+                <h4 id="traffic" class="card-title mb-0">Traffic</h4>
+                <div class="small text-medium-emphasis">January 2021</div>
+              </CCol>
+              <CCol :sm="7" class="d-none d-md-block">
+                <CButton color="primary" class="float-end">
+                  <CIcon icon="cil-cloud-download" />
+                </CButton>
+                <CButtonGroup
+                  class="float-end me-3"
+                  role="group"
+                  aria-label="Basic outlined example"
+                >
+                  <CButton color="secondary" variant="outline">Day</CButton>
+                  <CButton color="secondary" variant="outline" active
+                    >Month</CButton
+                  >
+                  <CButton color="secondary" variant="outline">Year</CButton>
+                </CButtonGroup>
+              </CCol>
+            </CRow>
+            <CRow>
+              <MainChartExample
+                style="height: 300px; max-height: 300px; margin-top: 40px"
+              />
+            </CRow>
+          </CCardBody>
+          <CCardFooter>
+            <CRow :xs="{ cols: 1 }" :md="{ cols: 5 }" class="text-center">
+              <CCol class="mb-sm-2 mb-0">
+                <div class="text-medium-emphasis">Visits</div>
+                <strong>29.703 Users (40%)</strong>
+                <CProgress
+                  class="mt-2"
+                  color="success"
+                  thin
+                  :precision="1"
+                  :value="40"
+                />
+              </CCol>
+              <CCol class="mb-sm-2 mb-0 d-md-down-none">
+                <div class="text-medium-emphasis">Unique</div>
+                <strong>24.093 Users (20%)</strong>
+                <CProgress
+                  class="mt-2"
+                  color="info"
+                  thin
+                  :precision="1"
+                  :value="20"
+                />
+              </CCol>
+              <CCol class="mb-sm-2 mb-0">
+                <div class="text-medium-emphasis">Pageviews</div>
+                <strong>78.706 Views (60%)</strong>
+                <CProgress
+                  class="mt-2"
+                  color="warning"
+                  thin
+                  :precision="1"
+                  :value="60"
+                />
+              </CCol>
+              <CCol class="mb-sm-2 mb-0">
+                <div class="text-medium-emphasis">New Users</div>
+                <strong>22.123 Users (80%)</strong>
+                <CProgress
+                  class="mt-2"
+                  color="danger"
+                  thin
+                  :precision="1"
+                  :value="80"
+                />
+              </CCol>
+              <CCol class="mb-sm-2 mb-0 d-md-down-none">
+                <div class="text-medium-emphasis">Bounce Rate</div>
+                <strong>Average Rate (40.15%)</strong>
+                <CProgress class="mt-2" :value="40" thin :precision="1" />
+              </CCol>
+            </CRow>
+          </CCardFooter>
         </CCard>
       </CCol>
     </CRow>
+    <WidgetsStatsD />
   </div>
 </template>
-
-<style scoped>
-.first-card-background {
-  background-color: #625da0;
-}
-.second-card-background {
-  background-color: #00b4af;
-}
-.third-card-background {
-  background-color: #0991ce;
-}
-</style>
 
 <script>
 import avatar1 from '@/assets/images/avatars/1.jpg'
@@ -92,16 +99,16 @@ import avatar3 from '@/assets/images/avatars/3.jpg'
 import avatar4 from '@/assets/images/avatars/4.jpg'
 import avatar5 from '@/assets/images/avatars/5.jpg'
 import avatar6 from '@/assets/images/avatars/6.jpg'
-// import MainChartExample from './charts/MainChartExample'
-// import WidgetsStatsA from './widgets/WidgetsStatsTypeA.vue'
-// import WidgetsStatsD from './widgets/WidgetsStatsTypeD.vue'
+import MainChartExample from './charts/MainChartExample'
+import WidgetsStatsA from './widgets/WidgetsStatsTypeA.vue'
+import WidgetsStatsD from './widgets/WidgetsStatsTypeD.vue'
 
 export default {
   name: 'Dashboard',
   components: {
-    // MainChartExample,
-    // WidgetsStatsA,
-    // WidgetsStatsD,
+    MainChartExample,
+    WidgetsStatsA,
+    WidgetsStatsD,
   },
   setup() {
     const progressGroupExample1 = [
