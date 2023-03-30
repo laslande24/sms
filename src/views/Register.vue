@@ -142,7 +142,7 @@ import { RouterLink } from 'vue-router'
               </div>
               <div class="d-flex justify-content-between mb-1">
                 <div class="pt-1 mb-2">
-                  <router-link to="/dashboard" style="color: #393f81"
+                  <router-link to="/school" style="color: #393f81"
                     ><button
                       class="btn btn-dark btn-lg btn-block"
                       type="button"
@@ -154,7 +154,9 @@ import { RouterLink } from 'vue-router'
 
                 <p class="mb-1 mt-2" style="color: #393f81">
                   Already have an account?
-                  <router-link to="/" style="color: #393f81; font-size: large"
+                  <router-link
+                    to="/login"
+                    style="color: #393f81; font-size: large"
                     >Signin to your account</router-link
                   >
                   <!-- <a href="/signin" style="color: #393f81; font-size: large"

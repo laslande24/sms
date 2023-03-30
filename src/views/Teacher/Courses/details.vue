@@ -22,7 +22,7 @@
             </router-link>
             <router-link
               class="meet"
-              :to="{ name: 'Course Meet', params: { id: course.id } }"
+              :to="{ name: 'Teacher Meet', params: { id: course.id } }"
             >
               <span class=""></span>
               <CIcon

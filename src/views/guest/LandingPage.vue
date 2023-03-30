@@ -15,37 +15,35 @@ import { RouterLink } from 'vue-router'
       <div class="container">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2">
-            <img src="@/assets/img/about.jpg" class="img-fluid" alt="" />
+            <img src="@/assets/images/image-1.jpeg" class="img-fluid" alt="" />
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>
-              Voluptatem dignissimos provident quasi corporis voluptates sit
-              assumenda.
-            </h3>
+            <h3>Problem of Cameroon education</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              We believe in the power by the youths to build the future of our
+              country. We are therefore putting in place initiatives to guide
+              them in developing adequate solutions for all. In line with
+              Government's policy related to the development of digital economy,
+              this competition reflects our commitment to support technological
+              innovation in Cameroon. Our wish is to inspire young university
+              students to provide concrete solutions to sustainable development
+              issues and create business development opportunities in the
+              digital economy space.
             </p>
             <ul>
               <li>
-                <i class="bi bi-check-circle"></i> Ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
+                <i class="bi bi-check-circle"></i> By competing with other young
+                developers, participants strengthen their skills and can use
+                this occasion to become economically active citizens.
               </li>
               <li>
-                <i class="bi bi-check-circle"></i> Duis aute irure dolor in
-                reprehenderit in voluptate velit.
-              </li>
-              <li>
-                <i class="bi bi-check-circle"></i> Ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate trideta storacalaperda mastiro dolore
-                eu fugiat nulla pariatur.
+                <i class="bi bi-check-circle"></i> In addition to the immediate
+                prizes, there are several other benefits for the participating
+                universities such as the participation in a high-level
+                incubation programme for the winning team and collaboration with
+                experts in the telecommunications sector.
               </li>
             </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in reprehenderit in voluptate
-            </p>
           </div>
         </div>
       </div>
@@ -84,15 +82,27 @@ import { RouterLink } from 'vue-router'
     <section id="why-us" class="why-us">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 d-flex align-items-stretch">
+          <div class="col-lg-12 d-flex align-items-stretch">
             <div class="content">
               <h3>Why Choose Yambaya-mo?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis
-                aute irure dolor in reprehenderit Asperiores dolores sed et.
-                Tenetur quia eos. Autem tempore quibusdam vel necessitatibus
-                optio ad corporis.
+                The theme chosen for this year's edition is the development of
+                digital solutions in education. Distance learning has become a
+                "must have" in education, since the closure of schools in 2020
+                in response to the COVID 19 pandemic. Participants shall be
+                expected to design digital applications to improve the distance
+                learning experience in Cameroonian schools. The solutions can be
+                used by both teachers and high school students, with emphasis on
+                the online availability of local pedagogic content. The
+                application designed must be able to enable teachers to create
+                virtual classrooms, record lessons, collect the work of
+                students, share past exams and corrections. Students shall use
+                the application to access recorded lessons and past exams,
+                participate in online tests and knowledge assessment. The theme
+                of the challenge is in line with achieving Sustainable
+                Development Goal 4 : "Ensuring quality inclusive and equitable
+                education and promoting sustainable learning opportunities for
+                all.”
               </p>
               <div class="text-center">
                 <a href="#" class="more-btn"
@@ -101,37 +111,33 @@ import { RouterLink } from 'vue-router'
               </div>
             </div>
           </div>
-          <div class="col-lg-8 d-flex align-items-stretch">
+          <div class="col-lg-12 d-flex align-items-stretch">
             <div class="icon-boxes d-flex flex-column justify-content-center">
               <div class="row">
-                <div class="col-xl-4 d-flex align-items-stretch">
+                <div
+                  class="col-12 d-flex align-items-stretch align-items-center text-center"
+                >
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-receipt"></i>
-                    <h4>Corporis voluptates sit</h4>
-                    <p>
-                      Consequuntur sunt aut quasi enim aliquam quae harum
-                      pariatur laboris nisi ut aliquip
-                    </p>
-                  </div>
-                </div>
-                <div class="col-xl-4 d-flex align-items-stretch">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-cube-alt"></i>
-                    <h4>Ullamco laboris ladore pan</h4>
-                    <p>
-                      Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deserunt
-                    </p>
-                  </div>
-                </div>
-                <div class="col-xl-4 d-flex align-items-stretch">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-images"></i>
-                    <h4>Labore consequatur</h4>
-                    <p>
-                      Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut
-                      maiores omnis facere
-                    </p>
+                    <h4>Features of Yamba-Yamo</h4>
+                    <ul style="list-style: none">
+                      <li><i class="bi bi-check-circle"></i>Ai-assistant</li>
+                      <li>
+                        <i class="bi bi-check-circle"></i> Ai-based counceling
+                      </li>
+                      <li>
+                        <i class="bi bi-check-circle"></i> Sign language
+                        recognition
+                      </li>
+                      <li>
+                        <i class="bi bi-check-circle"></i> Local language
+                        translation
+                      </li>
+                      <li>
+                        <i class="bi bi-check-circle"></i> Secure archiving
+                        system for document authntication
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -163,16 +169,16 @@ import { RouterLink } from 'vue-router'
                 <div
                   class="d-flex justify-content-between align-items-center mb-3"
                 >
-                  <h4>Web Development</h4>
-                  <p class="price">$169</p>
+                  <h4>Computer Science</h4>
                 </div>
 
-                <h3><a href="#">Website Design</a></h3>
+                <!-- <h3><a href="#">Website Design</a></h3> -->
                 <p>
-                  Et architecto provident deleniti facere repellat nobis iste.
-                  Id facere quia quae dolores dolorem tempore.
+                  The computer science concepts covering digital litteracy, web
+                  programming algorithms, databases, computer security are
+                  covered
                 </p>
-                <div
+                <!-- <div
                   class="trainer d-flex justify-content-between align-items-center"
                 >
                   <div class="trainer-profile d-flex align-items-center">
@@ -187,7 +193,7 @@ import { RouterLink } from 'vue-router'
                     <i class="bx bx-user"></i>&nbsp;50 &nbsp;&nbsp;
                     <i class="bx bx-heart"></i>&nbsp;65
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -206,18 +212,15 @@ import { RouterLink } from 'vue-router'
                 <div
                   class="d-flex justify-content-between align-items-center mb-3"
                 >
-                  <h4>Marketing</h4>
-                  <p class="price">$250</p>
+                  <h4>Economics</h4>
+                  <!-- <p class="price">$0</p> -->
                 </div>
-
-                <h3>
-                  <a href="#">Search Engine Optimization</a>
-                </h3>
                 <p>
-                  Et architecto provident deleniti facere repellat nobis iste.
-                  Id facere quia quae dolores dolorem tempore.
+                  Here the following concepts are studied Intro To Economics;
+                  Demand, Supply, Equilibrium; Models of Compeition, Business
+                  and Labor; Money and Banking; Monetary
                 </p>
-                <div
+                <!-- <div
                   class="trainer d-flex justify-content-between align-items-center"
                 >
                   <div class="trainer-profile d-flex align-items-center">
@@ -232,7 +235,7 @@ import { RouterLink } from 'vue-router'
                     <i class="bx bx-user"></i>&nbsp;35 &nbsp;&nbsp;
                     <i class="bx bx-heart"></i>&nbsp;42
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -243,7 +246,9 @@ import { RouterLink } from 'vue-router'
           >
             <div class="course-item">
               <img
-                src="@/assets/img/course-3.jpg"
+                src="@/assets/images/course-3.jpeg"
+                width="100%"
+                height="195px"
                 class="img-fluid"
                 alt="..."
               />
@@ -251,16 +256,17 @@ import { RouterLink } from 'vue-router'
                 <div
                   class="d-flex justify-content-between align-items-center mb-3"
                 >
-                  <h4>Content</h4>
-                  <p class="price">$180</p>
+                  <h4>Biology</h4>
+                  <!-- <p class="price">$0</p> -->
                 </div>
 
-                <h3><a href="#">Copywriting</a></h3>
+                <!-- <h3><a href="#">Copywriting</a></h3> -->
                 <p>
-                  Et architecto provident deleniti facere repellat nobis iste.
-                  Id facere quia quae dolores dolorem tempore.
+                  Major biological concepts for student focus include
+                  homeostasis, energy transfer and use, the relationship between
+                  structure and function, and change over time.
                 </p>
-                <div
+                <!-- <div
                   class="trainer d-flex justify-content-between align-items-center"
                 >
                   <div class="trainer-profile d-flex align-items-center">
@@ -275,7 +281,7 @@ import { RouterLink } from 'vue-router'
                     <i class="bx bx-user"></i>&nbsp;20 &nbsp;&nbsp;
                     <i class="bx bx-heart"></i>&nbsp;85
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

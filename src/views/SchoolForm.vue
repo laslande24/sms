@@ -419,11 +419,14 @@
 
 <script>
 import { ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import { addschool } from '@/composables/School'
 export default {
   name: 'SchoolForm',
 
   setup() {
+    const router = useRouter()
+
     const school = ref({
       name: '',
       address: '',
@@ -893,7 +896,7 @@ export default {
       },
     })
     watch(message, () => {
-      console.log(message)
+      router.push({ name: '/admin' })
     })
     const goSetting = () => {
       document.querySelector('.creat').classList.add('d-none')
